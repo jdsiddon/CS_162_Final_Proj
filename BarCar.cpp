@@ -12,8 +12,8 @@
  ** Pre-Conditions: No BlueMen created.
  ** Post-Conditions: BlueMen created.
  *********************************************************************/
-BarCar::BarCar()
-  : Room() {
+BarCar::BarCar(int roomNumber)
+  : Room(roomNumber) {
 }
 
 /*********************************************************************

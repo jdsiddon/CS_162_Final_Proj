@@ -20,7 +20,7 @@ class BarCar : public Room {
   protected:
 
   public:
-    BarCar();
+    BarCar(int);
     ~BarCar();
 
     /* Virtual methods defined in each sub-class. */

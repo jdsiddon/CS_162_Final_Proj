@@ -22,11 +22,11 @@ class Room {
   protected:
 
   public:
-    Room();
+    Room(int);
     virtual ~Room();
 
     /* Getters */
-    std::string getRoomNumber();
+    int getRoomNumber();
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room";}

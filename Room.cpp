@@ -1,10 +1,7 @@
-#include <iostream>
-#include <string>
-
 #include "Room.hpp"
 
-Room::Room() {
-
+Room::Room(int number) {
+  setRoomNumber(number);
 }
 
 Room::~Room() {
@@ -12,8 +9,8 @@ Room::~Room() {
 }
 
 
-std::string Room::getRoomNumber() {
-  return "getRoomNumber";
+int Room::getRoomNumber() {
+  return roomNumber;
 }
 
 

@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Room.hpp"
 #include "BarCar.hpp"
+#include "Queue.hpp"
 
 int main() {
   std::string tempName;
@@ -16,6 +17,25 @@ int main() {
   std::cout << player1->getName() << std::endl;
 
   /* Create test room */
+  int barCarNum = 1;
+  int leftCarNum = 2;
+  int rightCarNum = 3;
+  Room *barCar = new BarCar(barCarNum);
+  Room *leftCar = new BarCar(leftCarNum);
+  Room *rightCar = new BarCar(rightCarNum);
+
+  /* DEBUGGING CODE */
+  // std::cout << barCar->getRoomType() << std::endl; /* Get room name */
+  /* END DEBUGGING CODE */
+
+
+  Queue *train = new Queue();
+  /* Add car to train */
+  train->add(barCar, leftCar, rightCar);
+
+  Room *currentCar = train->getCurrentNode();
+
+  std::cout << currentCar->getRoomType();
 
 
   /* Free memory */
