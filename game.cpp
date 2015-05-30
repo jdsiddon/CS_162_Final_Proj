@@ -11,7 +11,7 @@ int main() {
   getline(std::cin, tempName);
 
   Player *player1 = new Player(tempName); /* Create player. */
-  std::cout << player1->getName();
+  std::cout << player1->getName() << std::endl;
 
 
 
