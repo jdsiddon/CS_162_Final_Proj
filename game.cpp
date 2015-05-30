@@ -3,6 +3,8 @@
 
 #include "Item.hpp"
 #include "Player.hpp"
+#include "Room.hpp"
+#include "BarCar.hpp"
 
 int main() {
   std::string tempName;
@@ -13,6 +15,7 @@ int main() {
   Player *player1 = new Player(tempName); /* Create player. */
   std::cout << player1->getName() << std::endl;
 
+  /* Create test room */
 
 
   /* Free memory */
