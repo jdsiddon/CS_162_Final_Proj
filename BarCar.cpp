@@ -6,6 +6,18 @@
 
 /*********************************************************************
  ** Function: BlueMen
+ ** Description: Default BarCar constructor. Calls Room class
+ ** default constructor and makes it an 'outside' room.
+ ** Parameters: None.
+ ** Pre-Conditions: No BlueMen created.
+ ** Post-Conditions: BlueMen created.
+ *********************************************************************/
+BarCar::BarCar()
+  : Room() {
+}
+
+/*********************************************************************
+ ** Function: BlueMen
  ** Description: Default BlueMen constructor. Calls Character class
  ** default constructor.
  ** Parameters: None.

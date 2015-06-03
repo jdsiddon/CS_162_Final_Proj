@@ -17,16 +17,20 @@ class Room {
 
   private:
     int roomNumber;
+    bool outside;
     void setRoomNumber(int);
+    void setOutside(bool);
 
   protected:
 
   public:
+    Room();
     Room(int);
     virtual ~Room();
 
     /* Getters */
     int getRoomNumber();
+    bool getOutside();
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room";}

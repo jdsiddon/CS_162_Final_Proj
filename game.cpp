@@ -27,9 +27,6 @@ int main() {
   /* END DEBUGGING CODE */
 
 
-
-
-
   /* Free memory */
   delete player1;
   player1 = 0;
@@ -39,19 +36,16 @@ int main() {
 
 Queue* createTrain() {
   /* DEBUGGING CODE, create test room with outside spaces */
-  int barCarNum = 1;
-  int leftCarNum = 2;
-  int rightCarNum = 3;
-
-  Room *barCar = new BarCar(barCarNum);
-  Room *leftCar = new BarCar(leftCarNum);
-  Room *rightCar = new BarCar(rightCarNum);
-
   Queue *train = new Queue();
 
   for (int i = 0; i < 4; i++) {
+    Room *barCar = new BarCar(i);
+    Room *leftCar = new BarCar();
+    Room *rightCar = new BarCar();
+
     /* Add car to train */
     train->add(barCar, leftCar, rightCar);
+
     std::cout << std::endl;
   }
   /* END DEBUGGING CODE, create test room with outside spaces */

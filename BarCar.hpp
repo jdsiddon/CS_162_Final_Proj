@@ -20,6 +20,7 @@ class BarCar : public Room {
   protected:
 
   public:
+    BarCar();
     BarCar(int);
     ~BarCar();
 
