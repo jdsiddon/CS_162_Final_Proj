@@ -18,22 +18,25 @@ class Room {
   private:
     int roomNumber;
     bool outside;
+    std::string trainSide;
     void setRoomNumber(int);
     void setOutside(bool);
+    void setTrainSide(std::string = NULL);
 
   protected:
 
   public:
-    Room();
     Room(int);
+    Room(int, std::string);
     virtual ~Room();
 
     /* Getters */
     int getRoomNumber();
     bool getOutside();
+    std::string getTrainSide();
 
     /* Virtual methods defined in each sub-class. */
-    virtual const char* getRoomType() { return "Room";}
+    virtual const char* getRoomType() { return "Room"; }
 
 };
 

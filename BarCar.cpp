@@ -5,35 +5,36 @@
 
 
 /*********************************************************************
- ** Function: BlueMen
+ ** Function: BarCar
  ** Description: Default BarCar constructor. Calls Room class
  ** default constructor and makes it an 'outside' room.
- ** Parameters: None.
- ** Pre-Conditions: No BlueMen created.
- ** Post-Conditions: BlueMen created.
- *********************************************************************/
-BarCar::BarCar()
-  : Room() {
-}
-
-/*********************************************************************
- ** Function: BlueMen
- ** Description: Default BlueMen constructor. Calls Character class
- ** default constructor.
- ** Parameters: None.
- ** Pre-Conditions: No BlueMen created.
- ** Post-Conditions: BlueMen created.
+ ** Parameters: int roomNumber, room number of the room.
+ ** Pre-Conditions: No BarCar created.
+ ** Post-Conditions: BarCar created.
  *********************************************************************/
 BarCar::BarCar(int roomNumber)
   : Room(roomNumber) {
 }
 
 /*********************************************************************
- ** Function: BlueMen
- ** Description: Default BlueMen destructor.
+ ** Function: BarCar
+ ** Description: Secondary BarCar constructor. Used to create
+ ** the left and right ouside portions of the car.
+ ** Parameters: int roomNumber, room number of the room. std::string side,
+ ** "left" or "right" side of the car.
+ ** Pre-Conditions: No BarCar created.
+ ** Post-Conditions: BarCar created.
+ *********************************************************************/
+BarCar::BarCar(int roomNumber, std::string side)
+  : Room(roomNumber, side) {
+}
+
+/*********************************************************************
+ ** Function: ~BarCar
+ ** Description: Default BarCar destructor.
  ** Parameters: None.
- ** Pre-Conditions: BlueMen.
- ** Post-Conditions: BlueMen object destroyed.
+ ** Pre-Conditions: BarCar.
+ ** Post-Conditions: BarCar object destroyed.
  *********************************************************************/
 BarCar::~BarCar() {
 
@@ -42,10 +43,10 @@ BarCar::~BarCar() {
 
 /*********************************************************************
  ** Function: chatWithBarTender
- ** Description: Default BlueMen destructor.
+ ** Description: .
  ** Parameters: None.
- ** Pre-Conditions: BlueMen.
- ** Post-Conditions: BlueMen object destroyed.
+ ** Pre-Conditions: .
+ ** Post-Conditions: .
  *********************************************************************/
 void BarCar::chatWithBarTender() {
 

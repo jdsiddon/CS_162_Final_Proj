@@ -20,8 +20,8 @@ class BarCar : public Room {
   protected:
 
   public:
-    BarCar();
     BarCar(int);
+    BarCar(int, std::string);
     ~BarCar();
 
     /* Virtual methods defined in each sub-class. */
