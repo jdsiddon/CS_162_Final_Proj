@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#include "Train.hpp"
+#include "Room.hpp"
 #include "Item.hpp"
 
 class Player {
@@ -14,14 +16,17 @@ class Player {
     void setBagLimit(int);
     std::vector<Item> bag;
     int bagLimit;
+    Room *currentRoom;
+
+    void setCurrentRoom(Room*);
 
   public:
     Player();
-    Player(std::string);
+    Player(std::string, Train*);
     std::string getName();
     int getBagLimit();
 
-    // Room* getCurrentRoom();
+    Room* getCurrentRoom();
     // Room* currentRoom();
 
 };

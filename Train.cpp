@@ -47,6 +47,25 @@ void Train::addCar(int carNumber) {
   cars.push_back(car1);             /* Add car to cars vector. */
 }
 
+/*********************************************************************
+ ** Function: generateItems
+ ** Description: Generates items that will be on the train. Items then
+ ** get distributed throughout the train.
+ ** Parameters: None.
+ ** Pre-Conditions: Items not created.
+ ** Post-Conditions: Adds items to items vector.
+ *********************************************************************/
+//void Train::generateItems() {
+  // Item *brakeLever = new Item("Brake Lever");   /* Create new Item. */
+  // Item *hat = new Item("Hat");   /* Create new Item. */
+  // Item *key = new Item("Key");   /* Create new Item. */
+  // Item *coins = new Item("Coins");   /* Create new Item. */
+  // items.push_back(brakeLever);             /* Add car to cars vector. */
+  // items.push_back(hat);             /* Add car to cars vector. */
+  // items.push_back(key);             /* Add car to cars vector. */
+  // items.push_back(coins);             /* Add car to cars vector. */
+//}
+
 
 /*********************************************************************
  ** Function: listCars
@@ -63,4 +82,16 @@ void Train::listCars() {
     /* Get the inside train room and print out the type of car its in. */
     std::cout << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
   }
+}
+
+/*********************************************************************
+ ** Function: getFirstRoom
+ ** Description: Returns the first room in the car.
+ ** Parameters: None.
+ ** Pre-Conditions: Cars not listed.
+ ** Post-Conditions: Cars listed.
+ *********************************************************************/
+Room* Train::getFirstRoom() {
+  /* Return the 'inside' room from the first car in the train. */
+  return cars.front()->getInside();
 }

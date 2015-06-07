@@ -11,17 +11,22 @@
 #define ROOM_HPP
 
 #include <string>
+#include <list>
 #include <iostream>
+
+#include "Item.hpp"
 
 class Room {
 
   private:
     bool outside;
     std::string trainSide;
+    std::list<Item*> items;
 
   protected:
     void setOutside(bool);
     void setTrainSide(std::string = NULL);
+
 
   public:
     Room();

@@ -17,6 +17,8 @@ class Train {
     void addCar(int);
     Room* getCurrentCar();
     void listCars();
+
+    Room* getFirstRoom();
     //Room* remove();
     //void adjacentNodes();
 
