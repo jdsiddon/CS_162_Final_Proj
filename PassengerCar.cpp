@@ -11,8 +11,8 @@
  ** Pre-Conditions: No PassengerCar created.
  ** Post-Conditions: PassengerCar created.
  *********************************************************************/
-PassengerCar::PassengerCar(int roomNumber)
-  : Room(roomNumber) {
+PassengerCar::PassengerCar()
+  : Room() {
 }
 
 /*********************************************************************
@@ -24,8 +24,8 @@ PassengerCar::PassengerCar(int roomNumber)
  ** Pre-Conditions: No PassengerCar created.
  ** Post-Conditions: PassengerCar created.
  *********************************************************************/
-PassengerCar::PassengerCar(int roomNumber, std::string side)
-  : Room(roomNumber, side) {
+PassengerCar::PassengerCar(std::string side)
+  : Room(side) {
 }
 
 /*********************************************************************

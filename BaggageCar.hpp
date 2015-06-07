@@ -20,12 +20,12 @@ class BaggageCar : public Room {
   protected:
 
   public:
-    BaggageCar(int);
-    BaggageCar(int, std::string);
+    BaggageCar();
+    BaggageCar(std::string);
     ~BaggageCar();
 
     /* Virtual methods defined in each sub-class. */
-    virtual const char* getRoomType() { return "Bar Car";}
+    virtual const char* getRoomType() { return "Baggage Car";}
 
     void chatWithBarTender();
 

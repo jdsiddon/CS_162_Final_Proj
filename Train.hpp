@@ -12,9 +12,11 @@ class Train {
     std::list<Car*> cars;
 
     Train();
+    ~Train();
 
     void addCar(int);
     Room* getCurrentCar();
+    void listCars();
     //Room* remove();
     //void adjacentNodes();
 

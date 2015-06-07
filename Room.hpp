@@ -16,22 +16,19 @@
 class Room {
 
   private:
-    int roomNumber;
     bool outside;
     std::string trainSide;
-    void setRoomNumber(int);
+
+  protected:
     void setOutside(bool);
     void setTrainSide(std::string = NULL);
 
-  protected:
-
   public:
-    Room(int);
-    Room(int, std::string);
+    Room();
+    Room(std::string);
     virtual ~Room();
 
     /* Getters */
-    int getRoomNumber();
     bool getOutside();
     std::string getTrainSide();
 

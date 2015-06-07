@@ -11,8 +11,8 @@
  ** Pre-Conditions: No BaggageCar created.
  ** Post-Conditions: BaggageCar created.
  *********************************************************************/
-BaggageCar::BaggageCar(int roomNumber)
-  : Room(roomNumber) {
+BaggageCar::BaggageCar()
+  : Room() {
 }
 
 /*********************************************************************
@@ -24,8 +24,8 @@ BaggageCar::BaggageCar(int roomNumber)
  ** Pre-Conditions: No BaggageCar created.
  ** Post-Conditions: BaggageCar created.
  *********************************************************************/
-BaggageCar::BaggageCar(int roomNumber, std::string side)
-  : Room(roomNumber, side) {
+BaggageCar::BaggageCar(std::string side)
+  : Room(side) {
 }
 
 /*********************************************************************
@@ -36,7 +36,7 @@ BaggageCar::BaggageCar(int roomNumber, std::string side)
  ** Post-Conditions: BaggageCar object destroyed.
  *********************************************************************/
 BaggageCar::~BaggageCar() {
-
+  std::cout << "Delete";
 }
 
 

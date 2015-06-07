@@ -14,9 +14,12 @@
 int main() {
   std::string tempName;
 
-  Train *train1 = new Train();
+  Train *train1 = new Train();  /* Create train. */
 
+  train1->listCars();     /* List cars in train, for debugging. */
 
+  delete train1;
+  train1 = 0;
 
 
 //  Car *car1 = new Car(barCar, leftCar, rightCar);

@@ -10,12 +10,15 @@
 
 class Car {
   private:
-
+    int carNumber;
 
   public:
     std::list<Room*> rooms;
     Car(int);
-    Room* getCurrentRoom();
+    ~Car();
+    void setCarNumber(int);
+    Room* getInside();
+    //void setRoomInCar(Room*);
     //Room* remove();
     //void adjacentNodes();
 

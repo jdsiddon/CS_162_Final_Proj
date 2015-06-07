@@ -2,38 +2,90 @@
 #include <list>
 
 #include "Car.hpp"
+#include "Room.hpp"
+#include "BaggageCar.hpp"
+#include "BarCar.hpp"
+#include "PassengerCar.hpp"
 
 
-Car::Car(int roomNumber) {
-  roomNumber = 3;
+/*********************************************************************
+ ** Function: Car
+ ** Description: Main car constructor.
+ ** Parameters: int number, numeric car identifier.
+ ** Pre-Conditions: Car not created.
+ ** Post-Conditions: Car created with 3 different rooms attached by
+ ** creating three different rooms and adding them to the 'rooms'
+ ** list.
+ *********************************************************************/
+Car::Car(int number) {
   Room *room;
   Room *leftOut;
   Room *rightOut;
 
-  //std::string type = room1->getRoomType();  /* Get room type. */
+  setCarNumber(number);/* Set car number */
 
-  if(roomNumber == 0) {
-    room = new BaggageCar(roomNumber);
-    Room *leftOut = new BaggageCar(false, "left");
-    Room *rightOut = new BaggageCar(false, "right");
+  /* DEBUGGING CODE */
+  //std::cout << "carNumber: " << carNumber << std::endl;
 
-  } else if (roomNumber >= 1 || roomNumber <= 2) {
-    room = new PassengerCar(roomNumber);
-    Room *leftOut = new PassengerCar(false, "left");
-    Room *rightOut = new PassengerCar(false, "right");
+  /* Create different room types. */
+  if(carNumber == 0) {
+    leftOut = new BaggageCar("left");
+    room = new BaggageCar(); /* MIDDLE ROOM */
+    rightOut = new BaggageCar("right");
 
-  } else if (roomNumber == 3) {
-    room = new BarCar(roomNumber);
-    leftOut = new BarCar(roomNumber, "left");
-    rightOut = new BarCar(roomNumber, "right");
+  } else if (carNumber >= 1 && carNumber <= 2) {
+    leftOut = new PassengerCar("left");
+    room = new PassengerCar(); /* MIDDLE ROOM */
+    rightOut = new PassengerCar("right");
+
+  } else if (carNumber == 3) {
+    leftOut = new BarCar("left");
+    room = new BarCar();  /* MIDDLE ROOM */
+    rightOut = new BarCar("right");
 
   }
 
-  rooms.push_back(room);
+  /* Add room types to rooms list. */
   rooms.push_back(leftOut);
+  rooms.push_back(room);  /* Room thats on the 'inside' of the train is in the middle! */
   rooms.push_back(rightOut);
+
+  std::cout << "Rooms Length: " << rooms.size();
 }
 
-Room* Car::getCurrentRoom() {
+Car::~Car() {
+  for (std::list<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) {
+    delete (*it);
+    (*it) = 0;
+  }
 
+}
+
+void Car::setCarNumber(int number) {
+  carNumber = number;
+}
+
+
+/*********************************************************************
+ ** Function: getInside
+ ** Description: Loops through the rooms of the car and returns the 'inside'
+ ** room of the car.
+ ** Parameters: None.
+ ** Pre-Conditions: No inside room returned.
+ ** Post-Conditions: Inside room returned.
+ *********************************************************************/
+Room* Car::getInside() {
+  Room *center; /* Temporary pointer to center of train, 'inside' room. */
+
+  for (std::list<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) { /* Loop through and get center car. */
+    if (!(*it)->getOutside()) {     /* Set center to center room. */
+      center = *it;
+
+    } else {
+      continue;
+
+    }
+  }
+
+  return center;
 }

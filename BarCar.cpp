@@ -12,8 +12,8 @@
  ** Pre-Conditions: No BarCar created.
  ** Post-Conditions: BarCar created.
  *********************************************************************/
-BarCar::BarCar(int roomNumber)
-  : Room(roomNumber) {
+BarCar::BarCar()
+  : Room() {
 }
 
 /*********************************************************************
@@ -25,8 +25,8 @@ BarCar::BarCar(int roomNumber)
  ** Pre-Conditions: No BarCar created.
  ** Post-Conditions: BarCar created.
  *********************************************************************/
-BarCar::BarCar(int roomNumber, std::string side)
-  : Room(roomNumber, side) {
+BarCar::BarCar(std::string side)
+  : Room(side) {
 }
 
 /*********************************************************************

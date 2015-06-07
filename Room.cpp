@@ -1,12 +1,11 @@
 #include "Room.hpp"
 
-Room::Room(int number) {
-  setRoomNumber(number);
+Room::Room() {
+  setTrainSide("inside");
   setOutside(false);
 }
 
-Room::Room(int number, std::string side) {
-  setRoomNumber(number);
+Room::Room(std::string side) {
   setOutside(true);
   setTrainSide(side);
 }
@@ -15,23 +14,13 @@ Room::~Room() {
 
 }
 
-
-/* Return the room number of the room. */
-int Room::getRoomNumber() {
-  return roomNumber;
-}
-
-/* Set the room number of the room. */
-void Room::setRoomNumber(int number) {
-  roomNumber = number;
-}
-
 /* Set if the room is outside. */
 void Room::setOutside(bool value) {
   outside = value;
 }
 
 /* Returns if the room is outside. */
+/* Returns false if the room is inside. */
 bool Room::getOutside() {
   return outside;
 }
