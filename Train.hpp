@@ -1,7 +1,7 @@
 #ifndef TRAIN_HPP
 #define TRAIN_HPP
 #include <string>
-#include <list>
+#include <deque>
 
 #include "Car.hpp"
 
@@ -9,7 +9,7 @@ class Train {
   private:
 
   public:
-    std::list<Car*> cars;
+    std::deque<Car*> cars;
 
     Train();
     ~Train();
@@ -19,6 +19,8 @@ class Train {
     void listCars();
 
     Room* getFirstRoom();
+
+    std::deque<Room*> moveOptions(Car*, Room*);
     //Room* remove();
     //void adjacentNodes();
 

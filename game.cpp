@@ -23,6 +23,9 @@ int main() {
 
   std::cout << bill->getCurrentRoom()->getRoomType();
 
+  // Open door.
+  bill->openDoor("east");
+
   delete train1;
   train1 = 0;
 

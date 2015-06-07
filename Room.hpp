@@ -11,7 +11,7 @@
 #define ROOM_HPP
 
 #include <string>
-#include <list>
+#include <deque>
 #include <iostream>
 
 #include "Item.hpp"
@@ -21,7 +21,7 @@ class Room {
   private:
     bool outside;
     std::string trainSide;
-    std::list<Item*> items;
+    std::deque<Item*> items;
 
   protected:
     void setOutside(bool);
@@ -36,6 +36,7 @@ class Room {
     /* Getters */
     bool getOutside();
     std::string getTrainSide();
+    void printRoomMenu();
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room"; }

@@ -27,6 +27,7 @@ class Player {
     int getBagLimit();
 
     Room* getCurrentRoom();
+
     // Room* currentRoom();
 
 };

@@ -27,7 +27,7 @@ Train::Train() {
  ** Post-Conditions: Train cars deleted.
  *********************************************************************/
 Train::~Train() {
-  for (std::list<Car*>::iterator it = cars.begin(); it != cars.end(); ++it) {
+  for (std::deque<Car*>::iterator it = cars.begin(); it != cars.end(); ++it) {
     delete (*it);
     (*it) = 0;
   }
@@ -78,9 +78,13 @@ void Train::addCar(int carNumber) {
 void Train::listCars() {
   /* DEBUGGING CODE */
   // std::cout << cars.size() << std::endl;
-  for (std::list<Car*>::const_iterator it = cars.begin(); it != cars.end(); ++it) {
+  std::cout << "Welcome abord!" << std::endl;
+  std::deque<Car*>::iterator it = cars.begin();
+
+  while(it != cars.end()) {
     /* Get the inside train room and print out the type of car its in. */
-    std::cout << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
+    std::cout << " - " << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
+    it++;
   }
 }
 
@@ -95,3 +99,9 @@ Room* Train::getFirstRoom() {
   /* Return the 'inside' room from the first car in the train. */
   return cars.front()->getInside();
 }
+
+/* Returns Options for movement to the user based on the car and room they are in. */
+std::deque<Room*> Train::moveOptions(Car*, Room*) {
+
+
+};

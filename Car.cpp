@@ -50,11 +50,12 @@ Car::Car(int number) {
   rooms.push_back(room);  /* Room thats on the 'inside' of the train is in the middle! */
   rooms.push_back(rightOut);
 
-  std::cout << "Rooms Length: " << rooms.size();
+  /* DEBUGGING CODE */
+  //std::cout << "Rooms Length: " << rooms.size();
 }
 
 Car::~Car() {
-  for (std::list<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) {
+  for (std::deque<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) {
     delete (*it);
     (*it) = 0;
   }
@@ -77,7 +78,7 @@ void Car::setCarNumber(int number) {
 Room* Car::getInside() {
   Room *center; /* Temporary pointer to center of train, 'inside' room. */
 
-  for (std::list<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) { /* Loop through and get center car. */
+  for (std::deque<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) { /* Loop through and get center car. */
     if (!(*it)->getOutside()) {     /* Set center to center room. */
       center = *it;
 

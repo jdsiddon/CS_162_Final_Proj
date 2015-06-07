@@ -13,7 +13,7 @@ class Car {
     int carNumber;
 
   public:
-    std::list<Room*> rooms;
+    std::deque<Room*> rooms;
     Car(int);
     ~Car();
     void setCarNumber(int);

@@ -34,3 +34,17 @@ void Room::setTrainSide(std::string text) {
 std::string Room::getTrainSide() {
   return trainSide;
 }
+
+
+void Room::printRoomMenu() {
+  int selection = 0;
+
+  while (selection != 1 || selection != 2) {
+    std::cout << "1. Look for items\n"
+              << "2. Move" << std::endl;
+
+    std::cin >> selection;
+  }
+
+  //return selection;
+}
