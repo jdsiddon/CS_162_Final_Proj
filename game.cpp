@@ -16,14 +16,18 @@ int main() {
 
   Train *train1 = new Train();  /* Create train. */
 
-  train1->listCars();     /* List cars in train, for debugging. */
-
+  //train1->listCars();     /* List cars in train, for debugging. */
 
   Player *bill = new Player("Tim Douglas", train1);  /* Create player. */
 
-  //bill->getCurrentRoom()->getRoomType();
 
-  bill->getCurrentRoom()->moveMenu();
+  /* Move rooms. */
+  while (1 == 1) {
+    std::cout << "Currently" << (bill->getCurrentRoom()->getOutside() ? " outside " : " inside ")
+              << bill->getCurrentRoom()->getRoomType() << std::endl;
+    bill->setCurrentRoom(bill->getCurrentRoom()->moveMenu());
+  }
+
 
   // Open door.
   //bill->openDoor("east");

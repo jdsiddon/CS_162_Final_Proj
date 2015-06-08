@@ -1,6 +1,6 @@
 #include "Room.hpp"
 
-
+#define MOVE_UNAVAIL " - UNAVAILABLE - "
 /*********************************************************************
  ** Function: Room
  ** Description: Default Room constructor. Used to create a Room that is
@@ -117,32 +117,70 @@ std::string Room::getTrainSide() {
 }
 
 /*********************************************************************
- ** Function: getTrainSide
- ** Description: Gets the side of the train the room is on.
+ ** Function: moveMenu
+ ** Description: Prints out current movement options to the user
+ ** based on the room.
  ** Parameters: None.
- ** Pre-Conditions: Room side unknown.
- ** Post-Conditions: Room side known.
+ ** Pre-Conditions: Room movement options unknown.
+ ** Post-Conditions: Room movement options known.
  *********************************************************************/
-void Room::moveMenu() {
+Room* Room::moveMenu() {
   int selection = 0;
+  Room *toMove;
 
+  /* North options */
+  std::cout << "1. Move North";
   if (getNorth())
-    std::cout << "1. Move North to " << getNorth()->getTrainSide() << " " << getNorth()->getRoomType();
+    std::cout << " to" << (getNorth()->getOutside() ? " outside " : " inside ") << getNorth()->getRoomType() << std::endl;
+  else
+    std::cout << MOVE_UNAVAIL << std::endl;
+
+  /* South options */
+  std::cout << "2. Move South";
   if (getSouth())
-    std::cout << "2. Move South to " << getSouth()->getTrainSide() << " " << getSouth()->getRoomType();
+    std::cout << " to" << (getSouth()->getOutside() ? " outside " : " inside ") << getSouth()->getRoomType() << std::endl;
+  else
+    std::cout << MOVE_UNAVAIL << std::endl;
+
+  /* East options */
+  std::cout << "3. Move East";
   if (getEast())
-    std::cout << "3. Move East to " << getEast()->getTrainSide() << " " << getEast()->getRoomType();
+    std::cout << " to" << (getEast()->getOutside() ? " outside " : " inside ") << getEast()->getRoomType() << std::endl;
+  else
+    std::cout << MOVE_UNAVAIL << std::endl;
+
+  /* West options */
+  std::cout << "4. Move West";
   if (getWest())
-    std::cout << "4. Move West to " << getWest()->getTrainSide() << " " << getWest()->getRoomType();
+    std::cout << " to" << (getWest()->getOutside() ? " outside " : " inside ") << getWest()->getRoomType() << std::endl;
+  else
+    std::cout << MOVE_UNAVAIL << std::endl;
 
-  while (selection != 1 || selection != 2) {
-    std::cout << "1. Look for items\n"
-              << "2. Move" << std::endl;
-
+  /* Get user input. */
+  while (selection < 1 || selection > 4) {
+    std::cout << "Enter movement: ";
     std::cin >> selection;
+
+    if (selection == 1 && getNorth()) {  /* Check if they select north, and north is an option. */
+      toMove = getNorth();  /* User wants to move north. */
+
+    } else if (selection == 2 && getSouth()) { /* Check if they select south, and south is an option. */
+      toMove = getSouth();  /* User wants to move south. */
+
+    } else if (selection == 3 && getEast()) { /* Check if they select east, and east is an option. */
+      toMove = getEast();   /* User wants to move east. */
+
+    } else if (selection == 4 && getWest()) { /* Check if they select west, and west is an option. */
+      toMove = getWest();   /* User wants to move west. */
+
+    } else {      /* Selection was invalid. */
+      std::cout << "Invalid Selection!" << std::endl;
+      selection = 0;  /* Reset selection to invalid value so while loop continues. */
+    }
+
   }
 
-  //return selection;
+  return toMove;
 }
 
 /*********************************************************************

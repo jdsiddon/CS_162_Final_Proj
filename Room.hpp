@@ -57,7 +57,7 @@ class Room {
     /* Getters */
     bool getOutside();
     std::string getTrainSide();
-    void moveMenu();
+    Room* moveMenu();
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room"; }

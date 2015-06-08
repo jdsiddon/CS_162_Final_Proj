@@ -18,7 +18,7 @@ class Player {
     int bagLimit;
     Room *currentRoom;
 
-    void setCurrentRoom(Room*);
+
 
   public:
     Player();
@@ -27,7 +27,8 @@ class Player {
     int getBagLimit();
 
     Room* getCurrentRoom();
-
+    void setCurrentRoom(Room*);
+    
     // Room* currentRoom();
 
 };

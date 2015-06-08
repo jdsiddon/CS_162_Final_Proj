@@ -62,25 +62,25 @@ Car::Car(int number, Car* endCar) {
   rooms.push_back(east);
 
   /* DEBUGGING CODE */
-  //std::cout << "Rooms Length: " << rooms.size();
-  std::cout << "Room Connections " << std::endl;
-  std::cout << "Room: " << room << std::endl;
-  std::cout << "- East: " << room->getEast()->getOutside() << ", " << room->getEast()->getTrainSide() << std::endl;
-  std::cout << "- West: " << room->getWest()->getOutside() << ", " << room->getWest()->getTrainSide() << std::endl;
-  std::cout << "- North: " << room->getNorth() << ", " << room->getNorth() << std::endl;
-  std::cout << "- South: " << room->getSouth() << ", " << room->getSouth() << std::endl;
-
-  std::cout << "West: " << west << std::endl;
-  std::cout << "- East: " << west->getEast() << ", " << west->getEast() << std::endl;
-  std::cout << "- West: " << west->getWest() << ", " << west->getWest() << std::endl;
-  std::cout << "- North: " << west->getNorth() << ", " << west->getNorth() << std::endl;
-  std::cout << "- South: " << west->getSouth() << ", " << west->getSouth() << std::endl;
-
-  std::cout << "East: " << east << std::endl;
-  std::cout << "- East: " << east->getEast() << ", " << east->getEast() << std::endl;
-  std::cout << "- West: " << east->getWest() << ", " << east->getWest() << std::endl;
-  std::cout << "- North: " << east->getNorth() << ", " << east->getNorth() << std::endl;
-  std::cout << "- South: " << east->getSouth() << ", " << east->getSouth() << std::endl;
+  // std::cout << "Rooms Length: " << rooms.size();
+  // std::cout << "Room Connections " << std::endl;
+  // std::cout << "Room: " << room << std::endl;
+  // std::cout << "- East: " << room->getEast()->getOutside() << ", " << room->getEast()->getTrainSide() << std::endl;
+  // std::cout << "- West: " << room->getWest()->getOutside() << ", " << room->getWest()->getTrainSide() << std::endl;
+  // std::cout << "- North: " << room->getNorth() << ", " << room->getNorth() << std::endl;
+  // std::cout << "- South: " << room->getSouth() << ", " << room->getSouth() << std::endl;
+  //
+  // std::cout << "West: " << west << std::endl;
+  // std::cout << "- East: " << west->getEast() << ", " << west->getEast() << std::endl;
+  // std::cout << "- West: " << west->getWest() << ", " << west->getWest() << std::endl;
+  // std::cout << "- North: " << west->getNorth() << ", " << west->getNorth() << std::endl;
+  // std::cout << "- South: " << west->getSouth() << ", " << west->getSouth() << std::endl;
+  //
+  // std::cout << "East: " << east << std::endl;
+  // std::cout << "- East: " << east->getEast() << ", " << east->getEast() << std::endl;
+  // std::cout << "- West: " << east->getWest() << ", " << east->getWest() << std::endl;
+  // std::cout << "- North: " << east->getNorth() << ", " << east->getNorth() << std::endl;
+  // std::cout << "- South: " << east->getSouth() << ", " << east->getSouth() << std::endl;
 }
 
 
