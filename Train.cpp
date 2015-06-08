@@ -87,13 +87,13 @@ void Train::listCars() {
   /* DEBUGGING CODE */
   // std::cout << cars.size() << std::endl;
   std::cout << "Welcome abord!" << std::endl;
-  // std::deque<Car*>::iterator it = cars.begin();
+  std::deque<Car*>::iterator it = cars.begin();
   //
-  // while(it != cars.end()) {
-  //   /* Get the inside train room and print out the type of car its in. */
-  //   std::cout << " - " << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
-  //   it++;
-  // }
+  while(it != cars.end()) {
+    /* Get the inside train room and print out the type of car its in. */
+    std::cout << " - " << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
+    it++;
+  }
 }
 
 /*********************************************************************

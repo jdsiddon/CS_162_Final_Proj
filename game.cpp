@@ -19,11 +19,11 @@ int main() {
   train1->listCars();     /* List cars in train, for debugging. */
 
 
-  //Player *bill = new Player("Tim Douglas", train1);  /* Create player. */
+  Player *bill = new Player("Tim Douglas", train1);  /* Create player. */
 
-  //std::cout << bill->getCurrentRoom()->getRoomType();
+  //bill->getCurrentRoom()->getRoomType();
 
-  //bill->getCurrentRoom->getMovementOptions();
+  bill->getCurrentRoom()->moveMenu();
 
   // Open door.
   //bill->openDoor("east");

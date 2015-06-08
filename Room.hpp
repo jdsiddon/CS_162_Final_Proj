@@ -20,7 +20,7 @@ class Room {
 
   private:
     bool outside;
-    std::string trainSide;
+
     std::deque<Item*> items;
 
     /* Room connectors */
@@ -33,6 +33,8 @@ class Room {
   protected:
     void setOutside(bool);
     void setTrainSide(std::string = NULL);
+    enum Side {east, west};
+    Side trainSide;
 
   public:
     Room(Room*);
@@ -43,6 +45,7 @@ class Room {
     void setNorth(Room*);
     void setSouth(Room*);
 
+    Room* getCurrent();
     Room* getEast();
     Room* getWest();
     Room* getNorth();
@@ -54,7 +57,7 @@ class Room {
     /* Getters */
     bool getOutside();
     std::string getTrainSide();
-    void printRoomMenu();
+    void moveMenu();
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room"; }

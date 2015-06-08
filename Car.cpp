@@ -19,8 +19,8 @@
  *********************************************************************/
 Car::Car(int number, Car* endCar) {
   Room *room;
-  Room *leftOut;
-  Room *rightOut;
+  Room *west;
+  Room *east;
 
   setCarNumber(number);/* Set car number */
 
@@ -28,53 +28,61 @@ Car::Car(int number, Car* endCar) {
   //std::cout << "carNumber: " << carNumber << std::endl;
 
   /* Create different room types. */
-  if(carNumber == 0) {  /* Start with the first car pointing to NULL's for 'previous car'. */
-    leftOut = new BaggageCar("left", NULL);
+  if(carNumber == 0) {  /* First car. */
+    /* Start with the first car pointing to NULL's for 'previous car'. */
+    west = new BaggageCar("west", NULL);
     room = new BaggageCar(NULL); /* MIDDLE ROOM */
-    rightOut = new BaggageCar("right", NULL);
+    east = new BaggageCar("east", NULL);
 
   } else if (carNumber >= 1 && carNumber <= 2) {
-    leftOut = new PassengerCar("left", endCar->getWestOutside());
-    room = new PassengerCar(endCar->getWestOutside()); /* MIDDLE ROOM */
-    rightOut = new PassengerCar("right", endCar->getWestOutside());
+    west = new PassengerCar("west", endCar->getWestOutside());
+    room = new PassengerCar(endCar->getInside()); /* MIDDLE ROOM */
+    east = new PassengerCar("east", endCar->getEastOutside());
 
   } else if (carNumber == 3) {
-    leftOut = new BarCar("left", endCar->getWestOutside());
-    room = new BarCar(endCar->getWestOutside());  /* MIDDLE ROOM */
-    rightOut = new BarCar("right", endCar->getWestOutside());
+    west = new BarCar("west", endCar->getWestOutside());
+    room = new BarCar(endCar->getInside());  /* MIDDLE ROOM */
+    east = new BarCar("east", endCar->getEastOutside());
 
   }
 
   /* Add east and west connections to the new rooms. */
-  leftOut->setEast(room);
-  leftOut->setWest(NULL);
+  west->setEast(room);
+  west->setWest(NULL);
 
-  room->setWest(leftOut);
-  room->setEast(rightOut);
+  room->setWest(west);
+  room->setEast(east);
 
-  rightOut->setWest(room);
-  rightOut->setEast(NULL);
+  east->setWest(room);
+  east->setEast(NULL);
 
   /* Add room types to rooms list. */
-  rooms.push_back(leftOut);
+  rooms.push_back(west);
   rooms.push_back(room);  /* Room thats on the 'inside' of the train is in the middle! */
-  rooms.push_back(rightOut);
+  rooms.push_back(east);
 
   /* DEBUGGING CODE */
   //std::cout << "Rooms Length: " << rooms.size();
   std::cout << "Room Connections " << std::endl;
-  std::cout << "Inside: " << std::endl;
+  std::cout << "Room: " << room << std::endl;
   std::cout << "- East: " << room->getEast()->getOutside() << ", " << room->getEast()->getTrainSide() << std::endl;
   std::cout << "- West: " << room->getWest()->getOutside() << ", " << room->getWest()->getTrainSide() << std::endl;
+  std::cout << "- North: " << room->getNorth() << ", " << room->getNorth() << std::endl;
+  std::cout << "- South: " << room->getSouth() << ", " << room->getSouth() << std::endl;
 
-  std::cout << "Left: " << std::endl;
-  std::cout << "- East: " << leftOut->getEast() << ", " << leftOut->getEast() << std::endl;
-  std::cout << "- West: " << leftOut->getWest() << ", " << leftOut->getWest() << std::endl;
+  std::cout << "West: " << west << std::endl;
+  std::cout << "- East: " << west->getEast() << ", " << west->getEast() << std::endl;
+  std::cout << "- West: " << west->getWest() << ", " << west->getWest() << std::endl;
+  std::cout << "- North: " << west->getNorth() << ", " << west->getNorth() << std::endl;
+  std::cout << "- South: " << west->getSouth() << ", " << west->getSouth() << std::endl;
 
-  std::cout << "Right: " << std::endl;
-  std::cout << "- East: " << rightOut->getEast() << ", " << rightOut->getEast() << std::endl;
-  std::cout << "- West: " << rightOut->getWest() << ", " << rightOut->getWest() << std::endl;
+  std::cout << "East: " << east << std::endl;
+  std::cout << "- East: " << east->getEast() << ", " << east->getEast() << std::endl;
+  std::cout << "- West: " << east->getWest() << ", " << east->getWest() << std::endl;
+  std::cout << "- North: " << east->getNorth() << ", " << east->getNorth() << std::endl;
+  std::cout << "- South: " << east->getSouth() << ", " << east->getSouth() << std::endl;
 }
+
 
 Car::~Car() {
   for (std::deque<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) {
