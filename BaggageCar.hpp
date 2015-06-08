@@ -20,8 +20,8 @@ class BaggageCar : public Room {
   protected:
 
   public:
-    BaggageCar();
-    BaggageCar(std::string);
+    BaggageCar(Room*);
+    BaggageCar(std::string, Room*);
     ~BaggageCar();
 
     /* Virtual methods defined in each sub-class. */

@@ -11,8 +11,8 @@
  ** Pre-Conditions: No BaggageCar created.
  ** Post-Conditions: BaggageCar created.
  *********************************************************************/
-BaggageCar::BaggageCar()
-  : Room() {
+BaggageCar::BaggageCar(Room *previousCar)
+  : Room(previousCar) {
 }
 
 /*********************************************************************
@@ -24,8 +24,8 @@ BaggageCar::BaggageCar()
  ** Pre-Conditions: No BaggageCar created.
  ** Post-Conditions: BaggageCar created.
  *********************************************************************/
-BaggageCar::BaggageCar(std::string side)
-  : Room(side) {
+BaggageCar::BaggageCar(std::string side, Room *previousCar)
+  : Room(side, previousCar) {
 }
 
 /*********************************************************************

@@ -12,8 +12,8 @@
  ** Pre-Conditions: No BarCar created.
  ** Post-Conditions: BarCar created.
  *********************************************************************/
-BarCar::BarCar()
-  : Room() {
+BarCar::BarCar(Room *previousCar)
+  : Room(previousCar) {
 }
 
 /*********************************************************************
@@ -25,8 +25,8 @@ BarCar::BarCar()
  ** Pre-Conditions: No BarCar created.
  ** Post-Conditions: BarCar created.
  *********************************************************************/
-BarCar::BarCar(std::string side)
-  : Room(side) {
+BarCar::BarCar(std::string side, Room *previousCar)
+  : Room(side, previousCar) {
 }
 
 /*********************************************************************

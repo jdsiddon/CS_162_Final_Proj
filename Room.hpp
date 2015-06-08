@@ -23,14 +23,32 @@ class Room {
     std::string trainSide;
     std::deque<Item*> items;
 
+    /* Room connectors */
+    Room* eastRoom;
+    Room* westRoom;
+    Room* northRoom;
+    Room* southRoom;
+
+
   protected:
     void setOutside(bool);
     void setTrainSide(std::string = NULL);
 
-
   public:
-    Room();
-    Room(std::string);
+    Room(Room*);
+    Room(std::string, Room*); //Add set previous
+
+    void setEast(Room*);
+    void setWest(Room*);
+    void setNorth(Room*);
+    void setSouth(Room*);
+
+    Room* getEast();
+    Room* getWest();
+    Room* getNorth();
+    Room* getSouth();
+
+
     virtual ~Room();
 
     /* Getters */

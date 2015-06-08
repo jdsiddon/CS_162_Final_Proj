@@ -1,13 +1,29 @@
 #include "Room.hpp"
 
-Room::Room() {
+Room::Room(Room* previousCar) {
   setTrainSide("inside");
   setOutside(false);
+
+  if(previousCar != NULL) { /* If previousCar is NULL, we are on the end of the train. */
+    /* Connect new room to last old last room. */
+    setSouth(previousCar);
+
+    /* Set previous car's north to the new room. */
+    previousCar->setNorth(this);
+  }
 }
 
-Room::Room(std::string side) {
-  setOutside(true);
-  setTrainSide(side);
+Room::Room(std::string side, Room* previousCar) {
+  setOutside(true); /* Make room on the outside. */
+  setTrainSide(side); /* Set the side */
+
+  if(previousCar != NULL) { /* If previousCar is NULL, we are on the end of the train. */
+    /* Connect new room to last old last room. */
+    setSouth(previousCar);
+
+    /* Set previous car's north to the new room. */
+    previousCar->setNorth(this);
+  }
 }
 
 Room::~Room() {
@@ -47,4 +63,36 @@ void Room::printRoomMenu() {
   }
 
   //return selection;
+}
+
+void Room::setSouth(Room* previousRoom) {
+  southRoom = previousRoom;
+}
+
+void Room::setNorth(Room* nextRoom) {
+  northRoom = nextRoom;
+}
+
+void Room::setEast(Room* sideRoom) {
+  eastRoom = sideRoom;
+}
+
+void Room::setWest(Room* sideRoom) {
+  westRoom = sideRoom;
+}
+
+Room* Room::getSouth() {
+  return this->southRoom;
+}
+
+Room* Room::getNorth() {
+  return this->northRoom;
+}
+
+Room* Room::getEast() {
+  return this->eastRoom;
+}
+
+Room* Room::getWest() {
+  return this->westRoom;
 }

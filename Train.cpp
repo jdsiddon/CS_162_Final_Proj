@@ -43,7 +43,15 @@ Train::~Train() {
  ** Post-Conditions: Car added to the 'cars' list in the Train object.
  *********************************************************************/
 void Train::addCar(int carNumber) {
-  Car *car1 = new Car(carNumber);   /* Create new car. */
+  Car *previousEndCar = NULL;
+
+  if(!cars.empty()) {
+    previousEndCar = cars.back(); /* Get the car that used to be the end. */
+  }
+
+  Car *car1 = new Car(carNumber, previousEndCar);   /* Create new car, pass the previously 'end'
+                                                       car to the constructor. */
+
   cars.push_back(car1);             /* Add car to cars vector. */
 }
 
@@ -79,13 +87,13 @@ void Train::listCars() {
   /* DEBUGGING CODE */
   // std::cout << cars.size() << std::endl;
   std::cout << "Welcome abord!" << std::endl;
-  std::deque<Car*>::iterator it = cars.begin();
-
-  while(it != cars.end()) {
-    /* Get the inside train room and print out the type of car its in. */
-    std::cout << " - " << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
-    it++;
-  }
+  // std::deque<Car*>::iterator it = cars.begin();
+  //
+  // while(it != cars.end()) {
+  //   /* Get the inside train room and print out the type of car its in. */
+  //   std::cout << " - " << (*it)->getInside()->getRoomType() << std::endl;  /* Only return the 'inside' room of the car. */
+  //   it++;
+  // }
 }
 
 /*********************************************************************
@@ -104,4 +112,4 @@ Room* Train::getFirstRoom() {
 std::deque<Room*> Train::moveOptions(Car*, Room*) {
 
 
-};
+}

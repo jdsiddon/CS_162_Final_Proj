@@ -20,8 +20,8 @@ class PassengerCar : public Room {
   protected:
 
   public:
-    PassengerCar();
-    PassengerCar(std::string);
+    PassengerCar(Room*);
+    PassengerCar(std::string, Room*);
     ~PassengerCar();
 
     /* Virtual methods defined in each sub-class. */
