@@ -41,12 +41,23 @@ PassengerCar::~PassengerCar() {
 
 
 /*********************************************************************
- ** Function: chatWithBarTender
- ** Description: .
+ ** Function: talk
+ ** Description: Talks to people in Bagger Car.
  ** Parameters: None.
- ** Pre-Conditions: .
- ** Post-Conditions: .
+ ** Pre-Conditions: No talking.
+ ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void PassengerCar::chatWithBarTender() {
+void PassengerCar::talk() {
+  std::cout << "I am just a helpless passenger!" << std::endl;
+}
 
+/*********************************************************************
+ ** Function: search
+ ** Description: Searches for items in Bagger Car.
+ ** Parameters: None.
+ ** Pre-Conditions: No searching.
+ ** Post-Conditions: Searching action complete.
+ *********************************************************************/
+void PassengerCar::search() {
+  std::cout << "Searching underneath the seats!" << std::endl;
 }

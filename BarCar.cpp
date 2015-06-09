@@ -42,12 +42,23 @@ BarCar::~BarCar() {
 
 
 /*********************************************************************
- ** Function: chatWithBarTender
- ** Description: .
+ ** Function: talk
+ ** Description: Talks to people in Bar Car.
  ** Parameters: None.
- ** Pre-Conditions: .
- ** Post-Conditions: .
+ ** Pre-Conditions: No talking.
+ ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void BarCar::chatWithBarTender() {
+void BarCar::talk() {
+  std::cout << "Want a drink?" << std::endl;
+}
 
+/*********************************************************************
+ ** Function: search
+ ** Description: Searches for items in Bar Car.
+ ** Parameters: None.
+ ** Pre-Conditions: No searching.
+ ** Post-Conditions: Searching action complete.
+ *********************************************************************/
+void BarCar::search() {
+  std::cout << "Searching behind the bar!" << std::endl;
 }

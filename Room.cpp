@@ -183,6 +183,20 @@ Room* Room::moveMenu() {
   return toMove;
 }
 
+int Room::roomOptions() {
+  /* Similar across all rooms */
+  std::cout << "1. Talk to people" << std::endl;
+  std::cout << "2. Search for items" << std::endl;
+  std::cout << "3. Move rooms" << std::endl;
+
+  /* Unique */
+  std::cout << "4. Have a drink" << std::endl;
+
+  std::cout << "4. Take a nap" << std::endl;
+
+  std::cout << "4. Tip the bag boy" << std::endl;
+}
+
 /*********************************************************************
  ** Function: setSouth
  ** Description: Sets the south link of the room.
@@ -280,4 +294,9 @@ Room* Room::getEast() {
  *********************************************************************/
 Room* Room::getWest() {
   return this->westRoom;
+}
+
+void Room::addItem(std::string itemName) {
+  Item *item1 = new Item(itemName);
+  items.push_back(item1);
 }

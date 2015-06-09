@@ -27,7 +27,8 @@ class BarCar : public Room {
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Bar Car";}
 
-    void chatWithBarTender();
+    void talk();
+    void search();
 
 };
 

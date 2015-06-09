@@ -51,13 +51,18 @@ class Room {
     Room* getNorth();
     Room* getSouth();
 
+    int roomOptions();
 
     virtual ~Room();
+    virtual void talk() { }
+    virtual void search() { }
 
     /* Getters */
     bool getOutside();
     std::string getTrainSide();
     Room* moveMenu();
+
+    void addItem(std::string);
 
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Room"; }

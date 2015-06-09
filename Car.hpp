@@ -25,6 +25,7 @@ class Car {
 
     Room* getEastOutside();
     Room* getWestOutside();
+    void distributeItems();
     //void setRoomInCar(Room*);
     //Room* remove();
     //void adjacentNodes();
