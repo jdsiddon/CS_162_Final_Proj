@@ -40,6 +40,13 @@ BarCar::~BarCar() {
 
 }
 
+std::string BarCar::getCustomFunction() {
+  return "Have a drink";
+}
+
+void BarCar::customBehavior(std::string name) {
+  std::cout << "Custom bar";
+}
 
 /*********************************************************************
  ** Function: talk
@@ -50,15 +57,4 @@ BarCar::~BarCar() {
  *********************************************************************/
 void BarCar::talk() {
   std::cout << "Want a drink?" << std::endl;
-}
-
-/*********************************************************************
- ** Function: search
- ** Description: Searches for items in Bar Car.
- ** Parameters: None.
- ** Pre-Conditions: No searching.
- ** Post-Conditions: Searching action complete.
- *********************************************************************/
-void BarCar::search() {
-  std::cout << "Searching behind the bar!" << std::endl;
 }

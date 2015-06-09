@@ -95,3 +95,24 @@ void Player::setCurrentRoom(Room *tempRoom) {
 Room* Player::getCurrentRoom() {
   return currentRoom;
 }
+
+/*********************************************************************
+ ** Function: addToBag
+ ** Description: Adds item to the players bag.
+ ** Parameters: Item *item, pointer to Item to add to players bag.
+ ** Pre-Conditions: Item not added to bag.
+ ** Post-Conditions: Item added to bag.
+ *********************************************************************/
+void Player::addToBag(Item *item) {
+  if(getBagLimit() <= getBagItems().size()) { /* Check bag limit. */
+    std::cout << "Bag full!";
+
+  } else {
+    bag.push_back(item);
+
+  }
+}
+
+std::vector<Item*> Player::getBagItems() {
+  return bag;
+}

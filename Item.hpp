@@ -8,6 +8,7 @@ class Item {
 
   private:
     std::string name;
+    bool visible;
 
     /* Setters */
     void setName(std::string);
@@ -16,8 +17,12 @@ class Item {
     Item();
     Item(std::string);
 
+    /* Setters */
+    void setVisible(bool);
+
     /* Getters */
     std::string getName();
+    bool getVisible();
 
 
 };

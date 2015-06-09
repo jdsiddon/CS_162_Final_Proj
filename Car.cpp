@@ -154,28 +154,28 @@ Room* Car::getWestOutside() {
     return NULL;
 }
 
+/*********************************************************************
+ ** Function: distributeItems
+ ** Description: Distributes items amoung the 3 rooms of a car (2 inside rooms, 1 outside)
+ ** Parameters: None.
+ ** Pre-Conditions: Items not in rooms.
+ ** Post-Conditions: Items entered into rooms of the car.
+ *********************************************************************/
 void Car::distributeItems() {
   std::vector<std::string> itemsToDistribute; /* Temporary vector to hold stuff to be distributed between rooms. */
   Dice *coin = new Dice();   /* Create a coin to flip to see if item gets added to room or not. */
-  std::cout << getInside()->getRoomType() << std::endl;
+  /* DEBUGGIN CODE */
+  // std::cout << getInside()->getRoomType() << std::endl;
 
   /* Set up items in each room based on room type. */
   if(strcmp(getInside()->getRoomType(), "Bar Car") == 0) {
-    itemsToDistribute.push_back("glass");
     itemsToDistribute.push_back("coin");
-    itemsToDistribute.push_back("stick");
-    itemsToDistribute.push_back("rock");
 
   } else if(strcmp(getInside()->getRoomType(), "Passenger Car") == 0) {
-    itemsToDistribute.push_back("important documents");
-    itemsToDistribute.push_back("shoes");
-    itemsToDistribute.push_back("coin");
-    itemsToDistribute.push_back("action figure");
+    itemsToDistribute.push_back("glass");
 
   } else if(strcmp(getInside()->getRoomType(), "Baggage Car") == 0) {
-    itemsToDistribute.push_back("coin");
-    itemsToDistribute.push_back("coin");
-    itemsToDistribute.push_back("coin");
+    itemsToDistribute.push_back("action figure");
     itemsToDistribute.push_back("brake lever");
 
   }

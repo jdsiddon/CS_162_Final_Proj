@@ -21,8 +21,6 @@ class Room {
   private:
     bool outside;
 
-    std::deque<Item*> items;
-
     /* Room connectors */
     Room* eastRoom;
     Room* westRoom;
@@ -35,6 +33,7 @@ class Room {
     void setTrainSide(std::string = NULL);
     enum Side {east, west};
     Side trainSide;
+    std::vector<Item*> items;
 
   public:
     Room(Room*);
@@ -51,11 +50,9 @@ class Room {
     Room* getNorth();
     Room* getSouth();
 
-    int roomOptions();
-
     virtual ~Room();
     virtual void talk() { }
-    virtual void search() { }
+    Item* search();
 
     /* Getters */
     bool getOutside();
@@ -63,8 +60,13 @@ class Room {
     Room* moveMenu();
 
     void addItem(std::string);
+    int getRoomOptions();
+    int printItems();
+    Item* takeItem();
 
     /* Virtual methods defined in each sub-class. */
+    virtual std::string getCustomFunction() { return " "; }
+    virtual void customBehavior(std::vector<Item*>) { }
     virtual const char* getRoomType() { return "Room"; }
 
 };

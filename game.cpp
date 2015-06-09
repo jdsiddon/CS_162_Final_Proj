@@ -13,6 +13,7 @@
 
 int main() {
   std::string tempName;
+  int primaryMenuOption = 0;
 
   Train *train1 = new Train();  /* Create train. */
 
@@ -20,27 +21,40 @@ int main() {
 
   Player *bill = new Player("Tim Douglas", train1);  /* Create player. */
 
-  bill->getCurrentRoom()->roomOptions();
-
-  /* Move rooms. */
-  while (1 == 1) {
-    std::cout << "Currently" << (bill->getCurrentRoom()->getOutside() ? " outside " : " inside ")
+  do {
+    /* State where Player is. */
+    std::cout << "\nCurrently" << (bill->getCurrentRoom()->getOutside() ? " outside " : " inside ")
               << bill->getCurrentRoom()->getRoomType() << std::endl;
-    bill->setCurrentRoom(bill->getCurrentRoom()->moveMenu());
-  }
+
+    /* Get the first level of action the player would like to take. */
+    primaryMenuOption = bill->getCurrentRoom()->getRoomOptions();
+
+    if (primaryMenuOption == 1) {        /* Talk to people in room. */
+      bill->getCurrentRoom()->talk();
+
+    } else if (primaryMenuOption == 2) { /* Search room. */
+      Item *newItem = bill->getCurrentRoom()->search();
+
+      if (newItem) {
+        bill->addToBag(newItem);
+      }
+
+    } else if (primaryMenuOption == 3) { /* Move rooms. */
+      bill->setCurrentRoom(bill->getCurrentRoom()->moveMenu());
+
+    } else if (primaryMenuOption == 4) { /* Custom room function. */
+      bill->getCurrentRoom()->customBehavior(bill->getBagItems());
+
+    }
+  } while(primaryMenuOption != 0);
 
 
-  // Open door.
-  //bill->openDoor("east");
-
+  /* Free memory */
   delete train1;
   train1 = 0;
 
-
-
-  // /* Free memory */
-  // delete player1;
-  // player1 = 0;
+  delete bill;
+  bill = 0;
 
   return 0;
 }

@@ -183,20 +183,6 @@ Room* Room::moveMenu() {
   return toMove;
 }
 
-int Room::roomOptions() {
-  /* Similar across all rooms */
-  std::cout << "1. Talk to people" << std::endl;
-  std::cout << "2. Search for items" << std::endl;
-  std::cout << "3. Move rooms" << std::endl;
-
-  /* Unique */
-  std::cout << "4. Have a drink" << std::endl;
-
-  std::cout << "4. Take a nap" << std::endl;
-
-  std::cout << "4. Tip the bag boy" << std::endl;
-}
-
 /*********************************************************************
  ** Function: setSouth
  ** Description: Sets the south link of the room.
@@ -296,7 +282,135 @@ Room* Room::getWest() {
   return this->westRoom;
 }
 
+/*********************************************************************
+ ** Function: getRoomOptions
+ ** Description: Prints out menu of available room options to the user.
+ ** Parameters: None.
+ ** Pre-Conditions: Room options unknown.
+ ** Post-Conditions: Room options known.
+ *********************************************************************/
+int Room::getRoomOptions() {
+  int selection = 0;
+
+  do {
+    std::cout << "1. Talk to people" << std::endl;
+    std::cout << "2. Search for items" << std::endl;
+    std::cout << "3. Move rooms" << std::endl;
+    std::cout << "4. " << this->getCustomFunction() << std::endl; /* Get description of unique method. */
+    std::cout << "Selection: ";
+    std::cin >> selection;
+  } while(selection < 0 || selection > 4);
+
+  return selection;
+}
+
+/*********************************************************************
+ ** Function: takeItem
+ ** Description: Removes an itme from the Room items vector and returns it.
+ ** Parameters: None.
+ ** Pre-Conditions: Item not removed.
+ ** Post-Conditions: Item removed.
+ *********************************************************************/
+Item* Room::takeItem() {
+  Item *item1;
+  int itemRange = items.size();
+  int selection = 0;
+
+  std::cout << "Select Item To Take" << std::endl;
+  for(int i = 0; i < items.size(); i++) {  /* Print out items in room. */
+    std::cout << i+1 << ". " << items[i]->getName() << std::endl;
+  }
+
+  while (selection < 1 || selection > itemRange) { /* While selection is invalid. */
+    std::cout << "Selection: ";
+    std::cin >> selection;
+  }
+
+  /* Remove 1 from selection because the items vector is 0 indexed. */
+  selection -= 1;
+
+  /* DEBUGGING CODE */
+  // std::cout << items[selection]->getName() << std::endl;
+
+  item1 = items[selection];
+  items.erase(items.begin() + selection);
+
+  return item1;  /* Return selected item. */
+}
+
+/*********************************************************************
+ ** Function: addItem
+ ** Description: Creates a new Item pointer and adds it to the Room
+ ** Item list.
+ ** Parameters: string itemName, name of the item to add.
+ ** Pre-Conditions: Item not added.
+ ** Post-Conditions: Item added.
+ *********************************************************************/
 void Room::addItem(std::string itemName) {
   Item *item1 = new Item(itemName);
   items.push_back(item1);
+}
+
+
+/*********************************************************************
+ ** Function: search
+ ** Description: Searches for items in room.
+ ** Parameters: None.
+ ** Pre-Conditions: No searching.
+ ** Post-Conditions: Searching action complete.
+ *********************************************************************/
+Item* Room::search() {
+  int take = 0;
+  Item *item1 = NULL;
+
+  std::cout << "Searching room..." << std::endl;
+  if (printItems() == 1) {
+    std::cout << "Item Menu" << std::endl;
+    std::cout << "1. Take item" << std::endl;
+    std::cout << "2. Return main" << std::endl;
+    std::cin >> take;
+
+    if (take == 1) {
+      item1 = takeItem();
+    }
+  }
+
+  return item1;
+}
+
+/*********************************************************************
+ ** Function: printItems
+ ** Description: Prints the 'visible' items out in the room.
+ ** Parameters: None.
+ ** Pre-Conditions: No items in the room listed.
+ ** Post-Conditions: Items in the room listed.
+ *********************************************************************/
+int Room::printItems() {
+  bool visibleItems = false; /* There are no visible items in room to print out. */
+
+  std::cout << "\n";
+  /* See if all the items are 'hidden'. */
+  for(int i = 0; i < items.size(); i++) {  /* Print out items in room. */
+    /* DEBUGGING CODE */
+    // std::cout<<items[i]->getVisible() << std::endl;
+    if (items[i]->getVisible()) {          /* Found a visible item. */
+      visibleItems = true;
+      break;
+    }
+  }
+
+  if(items.empty() || !visibleItems) {      /* If the items vector is empty or there aren't any visible items. */
+    std::cout << "No items in room!" << std::endl;
+    return 0;
+
+  } else {
+    std::cout << "Found Items:" << std::endl;
+    for(int i = 0; i < items.size(); i++) {  /* Print out items in room. */
+      std::cout << i+1 << ". " << items[i]->getName() << std::endl;
+    }
+    std::cout << "\n";
+    return 1;
+
+  }
+
 }

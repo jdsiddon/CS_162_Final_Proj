@@ -39,6 +39,50 @@ BaggageCar::~BaggageCar() {
   std::cout << "Delete";
 }
 
+std::string BaggageCar::getCustomFunction() {
+  return "Tip the bag boy";
+}
+
+/*********************************************************************
+ ** Function: getItem
+ ** Description: Takes an item from the passed vector. Used to
+ ** take items from a players bag.
+ ** Parameters: string name, name of item to take. vector bagOfItems, bag
+ ** full of items to check if item exists.
+ ** Pre-Conditions: No item removed.
+ ** Post-Conditions: Item removed from bag.
+ *********************************************************************/
+void BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
+  Item *item1;
+
+  /* Check to see if 'coin' are in the players bag of items. */
+  for(int i = 0; i < bagOfItems.size(); i++) {
+    //std::cout << bagOfItems[i]->getName();
+
+    if(bagOfItems[i]->getName() == "coin") {
+      item1 = bagOfItems[i];
+      bagOfItems.erase(bagOfItems.begin() + i); /* Remove item from the players bag. */
+
+      break;  /* Only need a single coin. */
+    }
+  }
+
+  if (item1) {    /* Found a coin so we can pay off the Bag Boy. */
+    std::cout << "Bag Boy: Hey thanks for the tip! You might go see what the bar tender knows\n"
+              << "Also I think I saw a glass in one of the passenger cars that he was looking for" << std::endl;
+
+    /* Toggle coins visible */
+    for(int i = 0; i < items.size(); i++) {
+      if(items[i]->getName() == "glass") {
+        items[i]->setVisible(true);
+      }
+    }
+
+  } else {
+    std::cout << "Bag Boy: Don't bother me!\n"
+              << "Well unless you have some incentive!" << std::endl;
+  }
+}
 
 /*********************************************************************
  ** Function: talk
@@ -48,16 +92,8 @@ BaggageCar::~BaggageCar() {
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
 void BaggageCar::talk() {
-  std::cout << "Oye! I am the bag man!" << std::endl;
-}
-
-/*********************************************************************
- ** Function: search
- ** Description: Searches for items in Bagger Car.
- ** Parameters: None.
- ** Pre-Conditions: No searching.
- ** Post-Conditions: Searching action complete.
- *********************************************************************/
-void BaggageCar::search() {
-  std::cout << "Searching through luggage!" << std::endl;
+  std::cout << "Oye! I am the bag man!\n"
+            << "Unless you have something worth my while"
+            << "I am going to get back to enjoying the last few minutes"
+            <<  " while we are still alive." << std::endl;
 }

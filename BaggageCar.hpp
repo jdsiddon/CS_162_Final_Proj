@@ -27,8 +27,9 @@ class BaggageCar : public Room {
     /* Virtual methods defined in each sub-class. */
     virtual const char* getRoomType() { return "Baggage Car";}
 
+    std::string getCustomFunction();
     void talk();
-    void search();
+    void customBehavior(std::vector<Item*>);
 
 };
 

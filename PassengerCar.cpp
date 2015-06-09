@@ -39,6 +39,13 @@ PassengerCar::~PassengerCar() {
 
 }
 
+std::string PassengerCar::getCustomFunction() {
+  return "Take a nap";
+}
+
+void PassengerCar::customBehavior(std::string name) {
+  std::cout << "Custom passenger" << std::endl;
+}
 
 /*********************************************************************
  ** Function: talk
@@ -49,15 +56,4 @@ PassengerCar::~PassengerCar() {
  *********************************************************************/
 void PassengerCar::talk() {
   std::cout << "I am just a helpless passenger!" << std::endl;
-}
-
-/*********************************************************************
- ** Function: search
- ** Description: Searches for items in Bagger Car.
- ** Parameters: None.
- ** Pre-Conditions: No searching.
- ** Post-Conditions: Searching action complete.
- *********************************************************************/
-void PassengerCar::search() {
-  std::cout << "Searching underneath the seats!" << std::endl;
 }
