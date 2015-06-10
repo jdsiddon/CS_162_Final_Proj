@@ -29,8 +29,8 @@ class BarCar : public Room {
 
     std::string getCustomFunction();
 
-    void talk();
-    void customBehavior(std::string);
+    void talk(bool);
+    std::string customBehavior(std::vector<Item*>);
 
 };
 

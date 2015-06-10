@@ -18,12 +18,17 @@ class Player {
     int bagLimit;
     Room *currentRoom;
 
+    bool sobriety;
+
   public:
     Player();
     Player(std::string, Train*);
     std::string getName();
     Item* getItem(std::string);
     int getBagLimit();
+
+    bool getSobriety();
+    void setSobriety(bool);
 
     void addToBag(Item*);
 

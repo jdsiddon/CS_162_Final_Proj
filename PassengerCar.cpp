@@ -39,21 +39,45 @@ PassengerCar::~PassengerCar() {
 
 }
 
+/*********************************************************************
+ ** Function: getCustomFunction
+ ** Description: Returns a breif string describing the custom function
+ ** available in the room type.
+ ** Parameters: None.
+ ** Pre-Conditions: Special function unknown.
+ ** Post-Conditions: Special function known.
+ *********************************************************************/
 std::string PassengerCar::getCustomFunction() {
   return "Take a nap";
 }
 
-void PassengerCar::customBehavior(std::string name) {
-  std::cout << "Custom passenger" << std::endl;
+/*********************************************************************
+ ** Function: customBehavior
+ ** Description: Allows player to take a nap and recover from being drunk
+ ** but also take 30 seconds off of the amount of time available before the
+ ** train flys of the tracks!
+ ** Parameters: vector<Item*> items, items the player has at their
+ ** disposal if needed.
+ ** Pre-Conditions: Special function unknown.
+ ** Post-Conditions: Special function known.
+ *********************************************************************/
+std::string PassengerCar::customBehavior(std::vector<Item*> items) {
+  std::cout << "\n'You take a 30 second cat nap, feeling much better but,"
+            << "time is runnining out!"<< std::endl;
+  return "rested";
 }
 
 /*********************************************************************
  ** Function: talk
- ** Description: Talks to people in Bagger Car.
+ ** Description: Talks to people in Passenger Car.
  ** Parameters: None.
  ** Pre-Conditions: No talking.
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void PassengerCar::talk() {
-  std::cout << "I am just a helpless passenger!" << std::endl;
+void PassengerCar::talk(bool drunk) {
+  if (drunk) {
+    std::cout << "\nPassengers: \"Why don't you take a quick rest so you can get this train under control you drunk!\"" << std::endl;
+  } else {
+    std::cout << "\nPassengers: \"You have to help us! This train is out of control!\"" << std::endl;
+  }
 }

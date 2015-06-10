@@ -51,7 +51,7 @@ class Room {
     Room* getSouth();
 
     virtual ~Room();
-    virtual void talk() { }
+    virtual void talk(bool) { }
     Item* search();
 
     /* Getters */
@@ -66,7 +66,7 @@ class Room {
 
     /* Virtual methods defined in each sub-class. */
     virtual std::string getCustomFunction() { return " "; }
-    virtual void customBehavior(std::vector<Item*>) { }
+    virtual std::string customBehavior(std::vector<Item*>) { return " "; }
     virtual const char* getRoomType() { return "Room"; }
 
 };

@@ -28,8 +28,8 @@ class BaggageCar : public Room {
     virtual const char* getRoomType() { return "Baggage Car";}
 
     std::string getCustomFunction();
-    void talk();
-    void customBehavior(std::vector<Item*>);
+    void talk(bool);
+    std::string customBehavior(std::vector<Item*>);
 
 };
 

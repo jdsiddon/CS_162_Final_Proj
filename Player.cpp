@@ -96,6 +96,29 @@ Room* Player::getCurrentRoom() {
   return currentRoom;
 }
 
+
+/*********************************************************************
+ ** Function: setSobriety
+ ** Description: Sets the sobriety of the Player.
+ ** Parameters: bool status, true if sober, false if drunk.
+ ** Pre-Conditions: No sobriety set.
+ ** Post-Conditions: Player sobriety set.
+ *********************************************************************/
+void Player::setSobriety(bool status) {
+  sobriety = status;
+}
+
+/*********************************************************************
+ ** Function: getSobriety
+ ** Description: Gets the sobriety of the Player.
+ ** Parameters: None.
+ ** Pre-Conditions: Sobriety unknown.
+ ** Post-Conditions: Sobriety known.
+ *********************************************************************/
+bool Player::getSobriety() {
+  return sobriety;
+}
+
 /*********************************************************************
  ** Function: addToBag
  ** Description: Adds item to the players bag.

@@ -39,6 +39,14 @@ BaggageCar::~BaggageCar() {
   std::cout << "Delete";
 }
 
+/*********************************************************************
+ ** Function: getCustomFunction
+ ** Description: Returns a breif string describing the custom function
+ ** available in the room type.
+ ** Parameters: None.
+ ** Pre-Conditions: Special function unknown.
+ ** Post-Conditions: Special function known.
+ *********************************************************************/
 std::string BaggageCar::getCustomFunction() {
   return "Tip the bag boy";
 }
@@ -52,8 +60,8 @@ std::string BaggageCar::getCustomFunction() {
  ** Pre-Conditions: No item removed.
  ** Post-Conditions: Item removed from bag.
  *********************************************************************/
-void BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
-  Item *item1;
+std::string BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
+  Item *item1 = NULL;
 
   /* Check to see if 'coin' are in the players bag of items. */
   for(int i = 0; i < bagOfItems.size(); i++) {
@@ -67,9 +75,10 @@ void BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
     }
   }
 
+  std::cout << "\n";
   if (item1) {    /* Found a coin so we can pay off the Bag Boy. */
-    std::cout << "Bag Boy: Hey thanks for the tip! You might go see what the bar tender knows\n"
-              << "Also I think I saw a glass in one of the passenger cars that he was looking for" << std::endl;
+    std::cout << "Bag Boy: \"Hey thanks for the tip! You might go see what the bar tender knows\n"
+              << "Also I think I saw a glass in one of the passenger cars that he was looking for\"" << std::endl;
 
     /* Toggle coins visible */
     for(int i = 0; i < items.size(); i++) {
@@ -79,8 +88,7 @@ void BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
     }
 
   } else {
-    std::cout << "Bag Boy: Don't bother me!\n"
-              << "Well unless you have some incentive!" << std::endl;
+    std::cout << "Bag Boy: \"Come back when you have some money. I don't work for free!\"" << std::endl;
   }
 }
 
@@ -91,9 +99,15 @@ void BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
  ** Pre-Conditions: No talking.
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void BaggageCar::talk() {
-  std::cout << "Oye! I am the bag man!\n"
-            << "Unless you have something worth my while"
-            << "I am going to get back to enjoying the last few minutes"
-            <<  " while we are still alive." << std::endl;
+void BaggageCar::talk(bool drunk) {
+  if(drunk) {
+    std::cout << "You: WHOA Buddy, I fink Dis traan is KKRAZY!\n"
+              << "Bag Boy: Get out of here you drunk!" << std::endl;
+  } else {
+    std::cout << "\nYou: So why are you standing here?\n"
+              << "Bag Boy: \"Oye! I was the bag boy, until the brake lever of this beast went missing!\n"
+              << "Now I am no one's servant! Well, I might be able to help if you make it worth my while.\n"
+              << "But until then I am going to get back to enjoying my last few minutes on earth!" << std::endl;
+  }
+
 }
