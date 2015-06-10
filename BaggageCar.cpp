@@ -100,14 +100,20 @@ std::string BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
 void BaggageCar::talk(bool drunk) {
-  if(drunk) {
-    std::cout << "You: WHOA Buddy, I fink Dis traan is KKRAZY!\n"
-              << "Bag Boy: Get out of here you drunk!" << std::endl;
-  } else {
-    std::cout << "\nYou: So why are you standing here?\n"
-              << "Bag Boy: \"Oye! I was the bag boy, until the brake lever of this beast went missing!\n"
-              << "Now I am no one's servant! Well, I might be able to help if you make it worth my while.\n"
-              << "But until then I am going to get back to enjoying my last few minutes on earth!" << std::endl;
+  if(getOutside()) {
+    std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
+
+  } else {  /* On inside of train.*/
+
+    if(drunk) {
+      std::cout << "You: WHOA Buddy, I fink Dis traan is KKRAZY!\n"
+                << "Bag Boy: Get out of here you drunk!" << std::endl;
+    } else {
+      std::cout << "\nYou: So why are you standing here?\n"
+                << "Bag Boy: \"Oye! I was the bag boy, until the brake lever of this beast went missing!\n"
+                << "Now I am no one's servant! Well, I might be able to help if you make it worth my while.\n"
+                << "But until then I am going to get back to enjoying my last few minutes on earth!" << std::endl;
+    }
   }
 
 }

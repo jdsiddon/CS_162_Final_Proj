@@ -62,8 +62,8 @@ std::string PassengerCar::getCustomFunction() {
  ** Post-Conditions: Special function known.
  *********************************************************************/
 std::string PassengerCar::customBehavior(std::vector<Item*> items) {
-  std::cout << "\n'You take a 30 second cat nap, feeling much better but,"
-            << "time is runnining out!"<< std::endl;
+  std::cout << "\n'You take a 30 second cat nap, feeling much better but, "
+            << "time is runnining out!'"<< std::endl;
   return "rested";
 }
 
@@ -75,9 +75,15 @@ std::string PassengerCar::customBehavior(std::vector<Item*> items) {
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
 void PassengerCar::talk(bool drunk) {
-  if (drunk) {
-    std::cout << "\nPassengers: \"Why don't you take a quick rest so you can get this train under control you drunk!\"" << std::endl;
-  } else {
-    std::cout << "\nPassengers: \"You have to help us! This train is out of control!\"" << std::endl;
+  if(getOutside()) {
+    std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
+
+  } else {  /* On inside of train.*/
+
+    if (drunk) {
+      std::cout << "\nPassengers: Why don't you take a quick rest so you can get this train under control you drunk!" << std::endl;
+    } else {
+      std::cout << "\nPassengers: You have to help us! This train is out of control!" << std::endl;
+    }
   }
 }

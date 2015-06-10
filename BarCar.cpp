@@ -107,14 +107,19 @@ std::string BarCar::customBehavior(std::vector<Item*> tempItems) {
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
 void BarCar::talk(bool sober) {
-  if (!sober) {  /* Check to see if player is drunk. */
-    std::cout << "\nYou: Heee YaaH! Whose Ridding heeer anywhoooo?!\n"
-              << "Bar Tender: You sir are cut off until you get some rest..." << std::endl;
-  } else {
-    std::cout << "\nYou: Notice anything weird around here?\n"
-              << "Bar Tender: Yea glasses keep going missing. If I got one or two\n"
-              << "back I might be able to remember something." << std::endl;
+  if(getOutside()) {
+    std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
 
+  } else {  /* On inside of train.*/
+    if (!sober) {  /* Check to see if player is drunk. */
+      std::cout << "\nYou: Heee YaaH! Whose Ridding heeer anywhoooo?!\n"
+                << "Bar Tender: You sir are cut off until you get some rest..." << std::endl;
+    } else {
+      std::cout << "\nYou: Notice anything weird around here?\n"
+                << "Bar Tender: Yea glasses keep going missing. If I got one or two\n"
+                << "back I might be able to remember something." << std::endl;
+
+    }
   }
 
 }
