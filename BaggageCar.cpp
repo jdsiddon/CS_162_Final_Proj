@@ -81,11 +81,14 @@ std::string BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
               << "Also I think I saw a glass in one of the passenger cars that he was looking for\"" << std::endl;
 
     /* Toggle coins visible */
-    for(int i = 0; i < items.size(); i++) {
-      if(items[i]->getName() == "glass") {
-        items[i]->setVisible(true);
-      }
-    }
+    //train1->toggleItemVisibility("glass");
+    // for(int i = 0; i < items.size(); i++) {
+    //   std::cout << items[i]->getName() << std::endl;
+    //   if(strcmp(items[i]->getName().c_str(), "glass") == 0) {
+    //     std::cout << "Glass Found!" << std::endl;
+    //     items[i]->setVisible(true);
+    //   }
+    // }
 
   } else {
     std::cout << "Bag Boy: \"Come back when you have some money. I don't work for free!\"" << std::endl;

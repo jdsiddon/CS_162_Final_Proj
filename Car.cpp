@@ -2,12 +2,6 @@
 #include <list>
 
 #include "Car.hpp"
-#include "Room.hpp"
-#include "BaggageCar.hpp"
-#include "BarCar.hpp"
-#include "PassengerCar.hpp"
-#include "Dice.hpp"
-
 
 /*********************************************************************
  ** Function: Car

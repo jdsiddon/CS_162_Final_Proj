@@ -113,3 +113,25 @@ std::deque<Room*> Train::moveOptions(Car*, Room*) {
 
 
 }
+
+/*********************************************************************
+ ** Function: toggleItemVisibility
+ ** Description: Sets each item with the name equal to the passed string
+ ** to visible, so users can see the item and pick it up.
+ ** Parameters: string name, name of the item to toggle to visible.
+ ** Pre-Conditions: Items in train with the same name invisible.
+ ** Post-Conditions: Items in train with the same name visible.
+ *********************************************************************/
+// void Train::toggleItemVisibility(std::string name) {
+//   std::deque<Car*>::iterator car = cars.begin();
+//
+//   /* Loop through cars in the train. */
+//   while(car != cars.end()) {
+//     /* Loop through rooms in car. */
+//     for (std::deque<Room*>::iterator room = (*car)->rooms.begin(); room != (*car)->rooms.end(); ++room) {
+//       (*room)->getRoomType(); /* Print out rooms. */
+//     }
+//
+//     car++;
+//   }
+// }

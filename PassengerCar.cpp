@@ -48,7 +48,7 @@ PassengerCar::~PassengerCar() {
  ** Post-Conditions: Special function known.
  *********************************************************************/
 std::string PassengerCar::getCustomFunction() {
-  return "Take a nap";
+  return "Take a nap/give brake lever";
 }
 
 /*********************************************************************
@@ -61,10 +61,36 @@ std::string PassengerCar::getCustomFunction() {
  ** Pre-Conditions: Special function unknown.
  ** Post-Conditions: Special function known.
  *********************************************************************/
-std::string PassengerCar::customBehavior(std::vector<Item*> items) {
-  std::cout << "\n'You take a 30 second cat nap, feeling much better but, "
-            << "time is runnining out!'"<< std::endl;
-  return "rested";
+std::string PassengerCar::customBehavior(std::vector<Item*> bagOfItems) {
+  Item *item1 = NULL;
+
+  /* Check to see if 'brake lever' are in the players bag of items. */
+  for(int i = 0; i < bagOfItems.size(); i++) {
+    //std::cout << bagOfItems[i]->getName();
+
+    if(bagOfItems[i]->getName() == "brake lever") {
+      item1 = bagOfItems[i];
+      bagOfItems.erase(bagOfItems.begin() + i); /* Remove item from the players bag. */
+
+      break;  /* Only need a single coin. */
+    }
+  }
+
+  if(!item1) {
+    std::cout << "\n'Since you don't have the brake lever you take a quick"
+              << "cat nap, feeling much better but, time is runnining out!'"<< std::endl;
+
+    return "rested";
+  } else {
+    std::cout << "\nPassengers: Oh thank goodness you have the brake lever!\n"
+              << "We just installed it! We are all safe now." << std::endl;
+
+    return "fixed";
+
+  }
+
+
+
 }
 
 /*********************************************************************
@@ -83,7 +109,9 @@ void PassengerCar::talk(bool drunk) {
     if (drunk) {
       std::cout << "\nPassengers: Why don't you take a quick rest so you can get this train under control you drunk!" << std::endl;
     } else {
-      std::cout << "\nPassengers: You have to help us! This train is out of control!" << std::endl;
+      std::cout << "\nPassengers: We can't find the brake lever anywhere!\n"
+                << "If you can find the brake lever we can fix the train and\n"
+                << "and put an end to this madness!" << std::endl;
     }
   }
 }

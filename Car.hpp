@@ -1,12 +1,14 @@
 #ifndef CAR_HPP
 #define CAR_HPP
+
 #include <string>
 #include <list>
 
 #include "Room.hpp"
+#include "Dice.hpp"
 #include "BarCar.hpp"
-#include "PassengerCar.hpp"
 #include "BaggageCar.hpp"
+#include "PassengerCar.hpp"
 
 class Car {
   private:

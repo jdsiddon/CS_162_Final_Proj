@@ -17,6 +17,7 @@ class Train {
     void addCar(int);
     Room* getCurrentCar();
     void listCars();
+    //void toggleItemVisibility(std::string);
 
     Room* getFirstRoom();
 
