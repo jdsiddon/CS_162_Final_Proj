@@ -27,7 +27,6 @@ class Room {
     Room* northRoom;
     Room* southRoom;
 
-
   protected:
     void setOutside(bool);
     void setTrainSide(std::string = NULL);

@@ -5,7 +5,6 @@
 #include <list>
 
 #include "Room.hpp"
-#include "Dice.hpp"
 #include "BarCar.hpp"
 #include "BaggageCar.hpp"
 #include "PassengerCar.hpp"
@@ -14,11 +13,10 @@ class Car {
   private:
     Car* previousCar;
     Car* nextCar;
-
     int carNumber;
+    std::deque<Room*> rooms;
 
   public:
-    std::deque<Room*> rooms;
     Car(int, Car*);
     ~Car();
     void setCarNumber(int);
@@ -28,9 +26,6 @@ class Car {
     Room* getEastOutside();
     Room* getWestOutside();
     void distributeItems();
-    //void setRoomInCar(Room*);
-    //Room* remove();
-    //void adjacentNodes();
 
 };
 

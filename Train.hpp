@@ -7,23 +7,17 @@
 
 class Train {
   private:
-
-  public:
     std::deque<Car*> cars;
 
+  public:
     Train();
     ~Train();
-
     void addCar(int);
     Room* getCurrentCar();
-    void listCars();
-    //void toggleItemVisibility(std::string);
-
     Room* getFirstRoom();
 
-    std::deque<Room*> moveOptions(Car*, Room*);
-    //Room* remove();
-    //void adjacentNodes();
+    /* DEBUGGING METHODS */
+    void listCars();
 
 };
 

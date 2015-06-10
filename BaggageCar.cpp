@@ -77,22 +77,21 @@ std::string BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
 
   std::cout << "\n";
   if (item1) {    /* Found a coin so we can pay off the Bag Boy. */
-    std::cout << "Bag Boy: \"Hey thanks for the tip! You might go see what the bar tender knows\n"
-              << "Also I think I saw a glass in one of the passenger cars that he was looking for\"" << std::endl;
+    std::cout << "Bag Boy: Hey thanks for the tip! You might look around here again\n"
+              << "I think I saw a some weird lever looking object." << std::endl;
 
-    /* Toggle coins visible */
-    //train1->toggleItemVisibility("glass");
-    // for(int i = 0; i < items.size(); i++) {
-    //   std::cout << items[i]->getName() << std::endl;
-    //   if(strcmp(items[i]->getName().c_str(), "glass") == 0) {
-    //     std::cout << "Glass Found!" << std::endl;
-    //     items[i]->setVisible(true);
-    //   }
-    // }
+    /* Toggle brake lever visibility */
+    for(int i = 0; i < items.size(); i++) {
+      if(items[i]->getName() == "brake lever") {
+        items[i]->setVisible(true);
+      }
+    }
 
   } else {
     std::cout << "Bag Boy: \"Come back when you have some money. I don't work for free!\"" << std::endl;
   }
+
+  return " ";
 }
 
 /*********************************************************************
@@ -102,20 +101,21 @@ std::string BaggageCar::customBehavior(std::vector<Item*> bagOfItems) {
  ** Pre-Conditions: No talking.
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void BaggageCar::talk(bool drunk) {
+void BaggageCar::talk(bool sober) {
   if(getOutside()) {
     std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
 
   } else {  /* On inside of train.*/
 
-    if(drunk) {
-      std::cout << "You: WHOA Buddy, I fink Dis traan is KKRAZY!\n"
-                << "Bag Boy: Get out of here you drunk!" << std::endl;
-    } else {
+    if(sober) {
       std::cout << "\nYou: So why are you standing here?\n"
-                << "Bag Boy: \"Oye! I was the bag boy, until the brake lever of this beast went missing!\n"
+                << "Bag Boy: Oye! I was the bag boy, until the brake lever of this beast went missing!\n"
                 << "Now I am no one's servant! Well, I might be able to help if you make it worth my while.\n"
                 << "But until then I am going to get back to enjoying my last few minutes on earth!" << std::endl;
+
+    } else {
+      std::cout << "You: WHOA Buddy, I fink Dis traan is KKRAZY!\n"
+                << "Bag Boy: Go take a nap you drunk!" << std::endl;
     }
   }
 

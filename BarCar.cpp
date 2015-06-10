@@ -80,17 +80,13 @@ std::string BarCar::customBehavior(std::vector<Item*> tempItems) {
   std::cout << "\n";
   if (item1) {    /* Found a glass so we can have a drink. */
     std::cout << "You: Here sir I found you a glass.\n"
-              << "Bar Tender: \"Thanks for the glass!\n"
-              << "Here enjoy the drink! You know I found some weird looking handle thing"
-              << "a while back I would check the train again I know its around here somewhere."<< std::endl;
+              << "Bar Tender: Thanks for the glass!\n"
+              << "Here enjoy the drink! You know I\n"
+              << "found some weird looking handle thing\n"
+              << "a while back I would check the train\n"
+              << "again I know its around here somewhere."<< std::endl;
 
-    /* Toggle coins visible */
-    for(int i = 0; i < items.size(); i++) {
-      if(items[i]->getName() == "brake lever") {
-        items[i]->setVisible(true);
-      }
-    }
-    std::cout << "\n'Had more than a few drinks. Not feeling so sharp'" << std::endl;
+    std::cout << "You:: Wow I feel drunk now" << std::endl;
 
   } else {
     std::cout << "Bar Tender: Come later maybe by then I will have found a glass to serve you." << std::endl;
@@ -111,13 +107,14 @@ void BarCar::talk(bool sober) {
     std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
 
   } else {  /* On inside of train.*/
-    if (!sober) {  /* Check to see if player is drunk. */
-      std::cout << "\nYou: Heee YaaH! Whose Ridding heeer anywhoooo?!\n"
-                << "Bar Tender: You sir are cut off until you get some rest..." << std::endl;
-    } else {
+    if (sober) {  /* Check to see if player is drunk. */
       std::cout << "\nYou: Notice anything weird around here?\n"
                 << "Bar Tender: Yea glasses keep going missing. If I got one or two\n"
                 << "back I might be able to remember something." << std::endl;
+
+    } else {
+      std::cout << "\nYou: Heee YaaH! Whose Ridding heeer anywhoooo?!\n"
+                << "Bar Tender: You sir annoying go take a nap..." << std::endl;
 
     }
   }

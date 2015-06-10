@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Train.hpp"
+#include "Car.hpp"
 #include "Room.hpp"
 #include "Item.hpp"
 
@@ -17,6 +18,7 @@ class Player {
     std::vector<Item*> bag;
     int bagLimit;
     Room *currentRoom;
+    Car *currentCar;
 
     bool sobriety;
 
@@ -32,8 +34,13 @@ class Player {
 
     void addToBag(Item*);
 
+
     Room* getCurrentRoom();
     void setCurrentRoom(Room*);
+
+    Car* getCurrentCar();
+    void setCurrentCar(Car*);
+
     std::vector<Item*> getBagItems();
 
     // Room* currentRoom();

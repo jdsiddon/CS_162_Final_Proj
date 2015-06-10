@@ -8,7 +8,7 @@ Item::Item() {
 Item::Item(std::string tempName) {
   setName(tempName);
 
-  if (tempName == "glass" || tempName == "brake lever") { /* If coins or brake lever, set to invisible. */
+  if (tempName == "brake lever") { /* If coins or brake lever, set to invisible. */
     this->setVisible(false);
 
   } else {

@@ -56,9 +56,17 @@ Car::Car(int number, Car* endCar) {
   rooms.push_back(room);  /* Room thats on the 'inside' of the train is in the middle! */
   rooms.push_back(east);
 
-  /* Distribute items between inside and outside rooms. */
-  distributeItems();
+  /* Set up items in each 'inside' room based on room type. */
+  if(strcmp(room->getRoomType(), "Bar Car") == 0) {
+    room->addItem("coin");
 
+  } else if(strcmp(room->getRoomType(), "Passenger Car") == 0) {
+    room->addItem("glass");
+
+  } else if(strcmp(room->getRoomType(), "Baggage Car") == 0) {
+    room->addItem("brake lever");
+
+  }
 
   /* DEBUGGING CODE */
   // std::cout << "Rooms Length: " << rooms.size();
@@ -81,7 +89,6 @@ Car::Car(int number, Car* endCar) {
   // std::cout << "- North: " << east->getNorth() << ", " << east->getNorth() << std::endl;
   // std::cout << "- South: " << east->getSouth() << ", " << east->getSouth() << std::endl;
 }
-
 
 Car::~Car() {
   for (std::deque<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) {
@@ -146,63 +153,4 @@ Room* Car::getWestOutside() {
     return rooms.front(); /* Return the first room because that is the outside east. */
   else
     return NULL;
-}
-
-/*********************************************************************
- ** Function: distributeItems
- ** Description: Distributes items amoung the 3 rooms of a car (2 inside rooms, 1 outside)
- ** Parameters: None.
- ** Pre-Conditions: Items not in rooms.
- ** Post-Conditions: Items entered into rooms of the car.
- *********************************************************************/
-void Car::distributeItems() {
-  std::vector<std::string> itemsToDistribute; /* Temporary vector to hold stuff to be distributed between rooms. */
-  Dice *coin = new Dice();   /* Create a coin to flip to see if item gets added to room or not. */
-  /* DEBUGGIN CODE */
-  // std::cout << getInside()->getRoomType() << std::endl;
-
-  /* Set up items in each room based on room type. */
-  if(strcmp(getInside()->getRoomType(), "Bar Car") == 0) {
-    itemsToDistribute.push_back("coin");
-
-  } else if(strcmp(getInside()->getRoomType(), "Passenger Car") == 0) {
-    itemsToDistribute.push_back("glass");
-
-  } else if(strcmp(getInside()->getRoomType(), "Baggage Car") == 0) {
-    itemsToDistribute.push_back("action figure");
-    itemsToDistribute.push_back("brake lever");
-
-  }
-
-  /* Distribute items between inside and outside rooms. */
-  while (!itemsToDistribute.empty()) {      /* Loop through items to distribute while the temp array isn't empty. */
-    for (std::deque<Room*>::iterator it = rooms.begin(); it != rooms.end(); ++it) { /* Loop through rooms in car. */
-
-      /* Check again if items vector is empty, if there is less than three items
-         in the vector then the for loop through the rooms will break. */
-      if(itemsToDistribute.empty()) {
-        break;
-
-      } else {  /* Still have items in vector. */
-        int result = coin->rollDice();
-
-        if (result >= 2) {   /* Heads, add item to room. */
-          /* DEBUGGING CODE */
-          // std::cout << "Adding" << std::endl;
-          // std::cout << (*it)->getRoomType() << std::endl;
-          // std::cout << "Item: " << itemsToDistribute.back() << std::endl;
-          (*it)->addItem(itemsToDistribute.back()); /* Add item to room. */
-          itemsToDistribute.pop_back();             /* Remove item from temp vector. */
-        }
-
-      }
-
-    }
-
-  }
-
-  /* Delete dice pointer. */
-  delete coin;
-  coin = 0;
-
 }

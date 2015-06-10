@@ -28,7 +28,7 @@ int main() {
   bool crashed = false;
   bool stopped = false;
 
-  while(!crashed || stopped) {
+  while(!crashed && !stopped) {
 
     do {
       // /* Update the amount of time that the train has been moving. */
@@ -60,7 +60,7 @@ int main() {
       /* Based on user response. */
       if (primaryMenuOption == 1) {        /* Talk to people in room. */
         /* DEBUGGING CODE */
-        // std::cout << bill->getSobriety() << std::endl;
+        std::cout << bill->getSobriety() << std::endl;
         bill->getCurrentRoom()->talk(bill->getSobriety());
 
       } else if (primaryMenuOption == 2) { /* Search room. */
@@ -75,6 +75,7 @@ int main() {
 
       } else if (primaryMenuOption == 4) { /* Custom room function. */
         playerStatus = bill->getCurrentRoom()->customBehavior(bill->getBagItems());
+        std::cout << "Player Status: " << playerStatus << std::endl;
 
         if (playerStatus == "drunk") { /* See what player status comes back from custom room behavior. */
           bill->setSobriety(false);
@@ -85,6 +86,7 @@ int main() {
         } else if (playerStatus == "fixed") { /* Brake lever was turned into to passengers! Train is fixed. */
           std::cout << "Train comes to a screeching hault!" << std::endl;
           stopped = true; /* Stop train. */
+          break;
         }
       }
 

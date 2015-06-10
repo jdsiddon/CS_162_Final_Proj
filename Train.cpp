@@ -56,27 +56,7 @@ void Train::addCar(int carNumber) {
 }
 
 /*********************************************************************
- ** Function: generateItems
- ** Description: Generates items that will be on the train. Items then
- ** get distributed throughout the train.
- ** Parameters: None.
- ** Pre-Conditions: Items not created.
- ** Post-Conditions: Adds items to items vector.
- *********************************************************************/
-//void Train::generateItems() {
-  // Item *brakeLever = new Item("Brake Lever");   /* Create new Item. */
-  // Item *hat = new Item("Hat");   /* Create new Item. */
-  // Item *key = new Item("Key");   /* Create new Item. */
-  // Item *coins = new Item("Coins");   /* Create new Item. */
-  // items.push_back(brakeLever);             /* Add car to cars vector. */
-  // items.push_back(hat);             /* Add car to cars vector. */
-  // items.push_back(key);             /* Add car to cars vector. */
-  // items.push_back(coins);             /* Add car to cars vector. */
-//}
-
-
-/*********************************************************************
- ** Function: listCars
+ ** Function: listCars - DEBUGGING METHOD, NOT IN USE!
  ** Description: Lists cars on the train. Prints out a list of
  ** inside the train rooms.
  ** Parameters: None.
@@ -107,31 +87,3 @@ Room* Train::getFirstRoom() {
   /* Return the 'inside' room from the first car in the train. */
   return cars.front()->getInside();
 }
-
-/* Returns Options for movement to the user based on the car and room they are in. */
-std::deque<Room*> Train::moveOptions(Car*, Room*) {
-
-
-}
-
-/*********************************************************************
- ** Function: toggleItemVisibility
- ** Description: Sets each item with the name equal to the passed string
- ** to visible, so users can see the item and pick it up.
- ** Parameters: string name, name of the item to toggle to visible.
- ** Pre-Conditions: Items in train with the same name invisible.
- ** Post-Conditions: Items in train with the same name visible.
- *********************************************************************/
-// void Train::toggleItemVisibility(std::string name) {
-//   std::deque<Car*>::iterator car = cars.begin();
-//
-//   /* Loop through cars in the train. */
-//   while(car != cars.end()) {
-//     /* Loop through rooms in car. */
-//     for (std::deque<Room*>::iterator room = (*car)->rooms.begin(); room != (*car)->rooms.end(); ++room) {
-//       (*room)->getRoomType(); /* Print out rooms. */
-//     }
-//
-//     car++;
-//   }
-// }

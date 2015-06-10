@@ -2,8 +2,8 @@ PROGS := game
 
 all: $(PROGS)
 
-game: game.o Player.o Item.o Train.o Room.o Car.o Dice.o BarCar.o PassengerCar.o BaggageCar.o
-	g++ -g game.o Player.o Item.o Train.o Room.o Car.o Dice.o BarCar.o PassengerCar.o BaggageCar.o -o game
+game: game.o Player.o Item.o Train.o Room.o Car.o BarCar.o PassengerCar.o BaggageCar.o
+	g++ -g game.o Player.o Item.o Train.o Room.o Car.o BarCar.o PassengerCar.o BaggageCar.o -o game
 
 Player.o: Player.cpp Player.hpp
 	g++ -c Player.cpp
@@ -19,9 +19,6 @@ Train.o: Train.cpp Train.hpp
 
 Car.o: Car.cpp Car.hpp
 	g++ -c Car.cpp
-
-Dice.o: Dice.cpp Dice.hpp
-	g++ -c Dice.cpp
 
 BarCar.o: BarCar.cpp BarCar.hpp
 	g++ -c BarCar.cpp

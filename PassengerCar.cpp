@@ -66,13 +66,11 @@ std::string PassengerCar::customBehavior(std::vector<Item*> bagOfItems) {
 
   /* Check to see if 'brake lever' are in the players bag of items. */
   for(int i = 0; i < bagOfItems.size(); i++) {
-    //std::cout << bagOfItems[i]->getName();
-
     if(bagOfItems[i]->getName() == "brake lever") {
       item1 = bagOfItems[i];
       bagOfItems.erase(bagOfItems.begin() + i); /* Remove item from the players bag. */
 
-      break;  /* Only need a single coin. */
+      break;  /* Only need a single brake lever to stop train. */
     }
   }
 
@@ -100,18 +98,19 @@ std::string PassengerCar::customBehavior(std::vector<Item*> bagOfItems) {
  ** Pre-Conditions: No talking.
  ** Post-Conditions: Talking action complete.
  *********************************************************************/
-void PassengerCar::talk(bool drunk) {
+void PassengerCar::talk(bool sober) {
   if(getOutside()) {
     std::cout << "\n'No one in their right mind is on the outside of a train to talk!'\n";
 
   } else {  /* On inside of train.*/
 
-    if (drunk) {
-      std::cout << "\nPassengers: Why don't you take a quick rest so you can get this train under control you drunk!" << std::endl;
-    } else {
+    if (sober) {
       std::cout << "\nPassengers: We can't find the brake lever anywhere!\n"
                 << "If you can find the brake lever we can fix the train and\n"
                 << "and put an end to this madness!" << std::endl;
+
+    } else {
+      std::cout << "\nPassengers: Why don't you take a quick rest so you can get this train under control you drunk!" << std::endl;
     }
   }
 }

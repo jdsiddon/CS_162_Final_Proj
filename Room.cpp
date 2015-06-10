@@ -52,8 +52,15 @@ Room::Room(std::string side, Room* previousCar) {
   }
 }
 
+/*********************************************************************
+ ** Function: ~Room
+ ** Description: Room destructor. Clears items
+ ** Parameters: None.
+ ** Pre-Conditions: Room still around.
+ ** Post-Conditions: Room destroyed.
+ *********************************************************************/
 Room::~Room() {
-
+  items.clear();
 }
 
 /*********************************************************************
@@ -127,6 +134,8 @@ std::string Room::getTrainSide() {
 Room* Room::moveMenu() {
   int selection = 0;
   Room *toMove;
+
+  std::cout << "\nMove Menu" << std::endl;
 
   /* North options */
   std::cout << "1. Move North";

@@ -24,7 +24,7 @@ Player::Player() {
 Player::Player(std::string text, Train *train) {
   setName(text); /* Set player name. */
   setBagLimit(5);
-
+  setSobriety(true);
   /* Set first room to where player starts. */
   setCurrentRoom(train->getFirstRoom());
 
@@ -94,6 +94,28 @@ void Player::setCurrentRoom(Room *tempRoom) {
  *********************************************************************/
 Room* Player::getCurrentRoom() {
   return currentRoom;
+}
+
+/*********************************************************************
+ ** Function: getCurrentCar
+ ** Description: Gets the current Car the player is in.
+ ** Parameters: None.
+ ** Pre-Conditions: Car room unknown.
+ ** Post-Conditions: Car room known.
+ *********************************************************************/
+Car* Player::getCurrentCar() {
+  return currentCar;
+}
+
+/*********************************************************************
+ ** Function: setCurrentCar
+ ** Description: sets the Car the player is in.
+ ** Parameters: Car *tempCar, car the player is in.
+ ** Pre-Conditions: Player not moved between cars.
+ ** Post-Conditions: Player moved to new car.
+ *********************************************************************/
+void Player::setCurrentCar(Car* tempCar) {
+  currentCar = tempCar;
 }
 
 
